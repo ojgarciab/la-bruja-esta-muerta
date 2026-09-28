@@ -175,7 +175,8 @@ FONTS = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=C
 FOOT = '<div class="foot">La bruja está muerta · un RPG acerca de la muerte</div>'
 
 def danger_row(n=8):
-    return '<div class="danger"><span class="lbl">Peligro</span>' + '<i></i>' * n + '</div>'
+    return ('<div class="danger"><div class="dtop"><span class="lbl">Peligro</span>' + '<i></i>' * n + '</div>'
+            '<div class="dnote">Si tu tirada es <b>igual o menor</b> que tu peligro: grave desgracia, atrapado… o muerte.</div></div>')
 
 def char_card(e=None):
     if e:
@@ -190,12 +191,9 @@ def char_card(e=None):
         f'<div class="stat"><div class="ab">{a}</div><div class="val">{"" if v is None else v}</div><div class="hint">{h}</div></div>'
         for (a, _, h), v in zip(RASGOS, vals))
     return f'''<div class="card"><div class="frame char">
-  <div class="top">{pic}<div class="ttl">{title}
-    <div class="line"><b>Nombre</b><span class="fill"></span></div></div></div>
+  <div class="top">{pic}<div class="ttl">{title}</div></div>
   <div class="stats">{stats}</div>
-  <div class="line"><b>Hechizo</b><span class="fill"></span></div>
   {danger_row()}
-  <div class="notes"><b>Notas · Plan de venganza</b><div class="rule"></div><div class="rule"></div><div class="rule"></div></div>
   {FOOT}
 </div></div>'''
 
@@ -224,6 +222,7 @@ def rules_card():
   <p class="prose">El GM te dice qué número debes <b>igualar o superar</b>:</p>
   <div class="chips">{chips}</div>
   <p class="prose">Si la tarea es peligrosa y fallas, ganas <b>1 punto de PELIGRO</b>. <b>Usar magia SIEMPRE es peligroso.</b> Los PNJ no tiran dados: tú estás obligado a tirar. Reduce tu peligro resolviendo tus problemas o huyendo de ellos.</p>
+  <p class="prose">Si sacas una tirada <b>igual o menor</b> que tus puntos de peligro, puedes sufrir una <b>grave desgracia</b>, quedar <b>atrapado</b> o <b>morir</b>.</p>
   <p class="prose small">Recuerda: casi todo lo que es normal para un humano es muy difícil para un animal, salvo que lo dividas en pasos pequeños. No tienes pulgares oponibles y solo sabes del mundo humano lo que te enseñó la bruja. Puedes hablar con animales de tu especie o similares.</p>
   {FOOT}
 </div></div>'''
@@ -238,28 +237,27 @@ html, body {{ background: #fff; color: {INK}; font-family: "Caladea", "Liberatio
 .frame {{ height: 100%; border: 0.6mm solid {INK}; border-radius: 3mm; padding: 2.6mm 3mm 2mm; position: relative; display: flex; flex-direction: column; box-shadow: inset 0 0 0 0.8mm #fff, inset 0 0 0 1.05mm {ACC}; }}
 .foot {{ margin-top: auto; padding-top: 0.8mm; text-align: center; font-size: 5.6pt; letter-spacing: .06em; color: {ACC}; font-family: Lora; font-style: italic; }}
 /* personaje */
-.top {{ display: flex; gap: 3mm; align-items: center; }}
-.portrait {{ width: 29mm; height: 29mm; flex: none; border-radius: 50%; background: {TINT}; border: 0.5mm solid {ACC}; display: flex; align-items: center; justify-content: center; }}
-.portrait .ico {{ width: 22mm; height: 22mm; }}
+.char {{ padding-top: 2.6mm; }}
+.top {{ display: flex; gap: 4mm; align-items: center; }}
+.portrait {{ width: 33mm; height: 33mm; flex: none; border-radius: 50%; background: {TINT}; border: 0.6mm solid {ACC}; display: flex; align-items: center; justify-content: center; }}
+.portrait .ico {{ width: 25mm; height: 25mm; }}
 .portrait.blank {{ background: #fff; border-style: dashed; }}
-.portrait.blank span {{ font-size: 7pt; color: #999; font-style: italic; }}
+.portrait.blank span {{ font-size: 8pt; color: #999; font-style: italic; }}
 .ttl {{ flex: 1; min-width: 0; }}
-.sp {{ font-family: Lora; font-weight: 700; font-size: 21pt; line-height: 1; color: {INK}; }}
-.sp.blankline {{ font-size: 11pt; display: flex; align-items: flex-end; gap: 1.5mm; padding-top: 3mm; }}
-.sub {{ font-size: 7pt; color: {ACC}; font-style: italic; margin: 1mm 0 3mm; }}
-.line {{ display: flex; align-items: flex-end; gap: 1.5mm; font-size: 8.5pt; margin-top: 1.2mm; }}
-.line b, .notes b, .danger .lbl {{ font-family: Lora; font-weight: 700; font-size: 8pt; text-transform: uppercase; letter-spacing: .04em; }}
-.fill {{ flex: 1; border-bottom: 0.3mm solid {INK}; height: 4.5mm; }}
-.stats {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6mm; margin: 2.6mm 0 0.8mm; }}
-.stat {{ border: 0.4mm solid {INK}; border-radius: 2mm; text-align: center; padding: 1mm 0.8mm 1.1mm; background: #fff; }}
-.stat .ab {{ font-family: Lora; font-weight: 700; font-size: 7.5pt; background: {INK}; color: #fff; border-radius: 1mm; padding: .3mm 0; letter-spacing: .05em; }}
-.stat .val {{ font-family: Lora; font-weight: 700; font-size: 17pt; line-height: 1.15; height: 7.4mm; }}
-.stat .hint {{ font-size: 5.3pt; line-height: 1.12; color: #555; height: 4.4mm; }}
-.danger {{ display: flex; align-items: center; gap: 1.5mm; margin-top: 2mm; }}
-.danger .lbl {{ margin-right: 1mm; }}
-.danger i {{ width: 4.6mm; height: 4.6mm; border: 0.4mm solid {INK}; border-radius: 50%; display: inline-block; }}
-.notes {{ margin-top: 1.8mm; }}
-.rule {{ border-bottom: 0.25mm solid #aaa; height: 4.1mm; }}
+.sp {{ font-family: Lora; font-weight: 700; font-size: 26pt; line-height: 1; color: {INK}; }}
+.sp.blankline {{ font-size: 12pt; display: flex; align-items: flex-end; gap: 1.5mm; }}
+.sub {{ font-size: 8pt; color: {ACC}; font-style: italic; margin-top: 1.6mm; }}
+.fill {{ flex: 1; border-bottom: 0.3mm solid {INK}; height: 5mm; }}
+.stats {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; margin: 3mm 0 0; }}
+.stat {{ border: 0.45mm solid {INK}; border-radius: 2mm; text-align: center; padding: 1.2mm 1mm 1.4mm; background: #fff; }}
+.stat .ab {{ font-family: Lora; font-weight: 700; font-size: 8.5pt; background: {INK}; color: #fff; border-radius: 1mm; padding: .4mm 0; letter-spacing: .05em; }}
+.stat .val {{ font-family: Lora; font-weight: 700; font-size: 24pt; line-height: 1.1; height: 10.5mm; }}
+.stat .hint {{ font-size: 6.2pt; line-height: 1.15; color: #555; height: 7.4mm; }}
+.danger {{ margin-top: 3mm; border: 0.45mm solid {ACC}; border-radius: 2mm; background: {TINT}; padding: 2mm 2.6mm 1.8mm; }}
+.dtop {{ display: flex; align-items: center; justify-content: space-between; }}
+.danger .lbl {{ font-family: Lora; font-weight: 700; font-size: 10pt; text-transform: uppercase; letter-spacing: .05em; }}
+.danger i {{ width: 6mm; height: 6mm; border: 0.45mm solid {INK}; border-radius: 50%; display: inline-block; background: #fff; }}
+.dnote {{ font-size: 6.8pt; font-style: italic; color: {INK}; margin-top: 1.4mm; text-align: center; }}
 /* tablas */
 .head {{ display: flex; align-items: center; gap: 2.5mm; border-bottom: 0.4mm solid {INK}; padding-bottom: 1.8mm; margin-bottom: 2mm; }}
 .hico {{ width: 13mm; height: 13mm; flex: none; }}
