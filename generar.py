@@ -178,23 +178,36 @@ def danger_row(n=8):
     return ('<div class="danger"><div class="dtop"><span class="lbl">Peligro</span>' + '<i></i>' * n + '</div>'
             '<div class="dnote">Si tu tirada es <b>igual o menor</b> que tu peligro: grave desgracia, atrapado… o muerte.</div></div>')
 
+def d10_badge(n=None):
+    num = "" if n is None else n
+    body, face, line = (ACC, INK, W) if n is not None else (W, W, ACC)
+    outline = "" if n is not None else f' stroke="{ACC}" stroke-width="3.5" stroke-linejoin="round"'
+    return f'''<svg class="badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="{body}"{outline}/>
+<path d="M50 3 L80 56 L50 74 L20 56 Z" fill="{face}" opacity=".35"/>
+<path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="{line}" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
+<text x="50" y="59" text-anchor="middle" font-size="{30 if n == 10 else 36}" font-family="Lora" font-weight="700" fill="{W}">{num}</text></svg>'''
+
+CHOICES = ["El pueblo es…", "El cazador es…", "La bruja te enseñó…"]
+
 def char_card(e=None):
     if e:
         n, nombre, ic, *vals = e
         pic = f'<div class="portrait">{icon(ic)}</div>'
-        title = f'<div class="sp">{nombre}</div><div class="sub">Lindo animalito del bosque · d10 = {n}</div>'
+        title = f'<div class="sp">{nombre}</div>'
     else:
-        vals = [None] * 4
+        n, vals = None, [None] * 4
         pic = '<div class="portrait blank"><span>Retrato</span></div>'
-        title = '<div class="sp blankline">Especie: <span class="fill"></span></div><div class="sub">Lindo animalito del bosque</div>'
+        title = '<div class="sp blankline"><span class="fill"></span></div>'
     stats = "".join(
-        f'<div class="stat"><div class="ab">{a}</div><div class="val">{"" if v is None else v}</div><div class="hint">{h}</div></div>'
-        for (a, _, h), v in zip(RASGOS, vals))
-    return f'''<div class="card"><div class="frame char">
-  <div class="top">{pic}<div class="ttl">{title}</div></div>
-  <div class="stats">{stats}</div>
+        f'<div class="stat"><div class="val">{"" if v is None else v}</div><div class="txt"><div class="ab">{nom}</div><div class="hint">{h}</div></div></div>'
+        for (_, nom, h), v in zip(RASGOS, vals))
+    choices = "".join(f'<div class="choice"><b>{c}</b><span class="fill"></span><span class="num"></span></div>' for c in CHOICES)
+    return f'''<div class="card"><div class="frame char{' blankchar' if e is None else ''}">
+  {d10_badge(n)}
+  <div class="top">{pic}<div class="ttl">{title}<div class="stats">{stats}</div></div></div>
+  <div class="choices">{choices}</div>
   {danger_row()}
-  {FOOT}
 </div></div>'''
 
 def table_card(title, ic, items, sub, cls=""):
@@ -237,27 +250,34 @@ html, body {{ background: #fff; color: {INK}; font-family: "Caladea", "Liberatio
 .frame {{ height: 100%; border: 0.6mm solid {INK}; border-radius: 3mm; padding: 2.6mm 3mm 2mm; position: relative; display: flex; flex-direction: column; box-shadow: inset 0 0 0 0.8mm #fff, inset 0 0 0 1.05mm {ACC}; }}
 .foot {{ margin-top: auto; padding-top: 0.8mm; text-align: center; font-size: 5.6pt; letter-spacing: .06em; color: {ACC}; font-family: Lora; font-style: italic; }}
 /* personaje */
-.char {{ padding-top: 2.6mm; }}
-.top {{ display: flex; gap: 4mm; align-items: center; }}
-.portrait {{ width: 33mm; height: 33mm; flex: none; border-radius: 50%; background: {TINT}; border: 0.6mm solid {ACC}; display: flex; align-items: center; justify-content: center; }}
-.portrait .ico {{ width: 25mm; height: 25mm; }}
+.char {{ padding: 2.8mm 3mm 2.6mm; justify-content: space-between; }}
+.badge {{ position: absolute; top: 1.8mm; right: 2mm; width: 11mm; height: 11mm; }}
+.top {{ display: flex; gap: 3mm; align-items: center; }}
+.portrait {{ width: 32mm; height: 32mm; flex: none; border-radius: 50%; background: {TINT}; border: 0.6mm solid {ACC}; display: flex; align-items: center; justify-content: center; }}
+.portrait .ico {{ width: 24mm; height: 24mm; }}
 .portrait.blank {{ background: #fff; border-style: dashed; }}
 .portrait.blank span {{ font-size: 8pt; color: #999; font-style: italic; }}
 .ttl {{ flex: 1; min-width: 0; }}
-.sp {{ font-family: Lora; font-weight: 700; font-size: 26pt; line-height: 1; color: {INK}; }}
-.sp.blankline {{ font-size: 12pt; display: flex; align-items: flex-end; gap: 1.5mm; }}
-.sub {{ font-size: 8pt; color: {ACC}; font-style: italic; margin-top: 1.6mm; }}
+.sp {{ font-family: Lora; font-weight: 700; font-size: 21pt; line-height: 1; color: {INK}; height: 9mm; padding-right: 11mm; }}
+.sp.blankline {{ display: flex; align-items: flex-end; height: 8mm; margin-bottom: 1mm; }}
 .fill {{ flex: 1; border-bottom: 0.3mm solid {INK}; height: 5mm; }}
-.stats {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; margin: 3mm 0 0; }}
-.stat {{ border: 0.45mm solid {INK}; border-radius: 2mm; text-align: center; padding: 1.2mm 1mm 1.4mm; background: #fff; }}
-.stat .ab {{ font-family: Lora; font-weight: 700; font-size: 8.5pt; background: {INK}; color: #fff; border-radius: 1mm; padding: .4mm 0; letter-spacing: .05em; }}
-.stat .val {{ font-family: Lora; font-weight: 700; font-size: 24pt; line-height: 1.1; height: 10.5mm; }}
-.stat .hint {{ font-size: 6.2pt; line-height: 1.15; color: #555; height: 7.4mm; }}
-.danger {{ margin-top: 3mm; border: 0.45mm solid {ACC}; border-radius: 2mm; background: {TINT}; padding: 2mm 2.6mm 1.8mm; }}
+.stats {{ display: grid; grid-template-columns: 1fr 1fr; gap: 1.4mm; }}
+.stat {{ display: flex; align-items: stretch; border: 0.45mm solid {INK}; border-radius: 1.8mm; overflow: hidden; height: 10.6mm; background: #fff; }}
+.stat .val {{ flex: none; width: 8mm; background: {INK}; color: #fff; font-family: Lora; font-weight: 700; font-size: 18pt; display: flex; align-items: center; justify-content: center; }}
+.stat .txt {{ flex: 1; min-width: 0; padding: .7mm .8mm; display: flex; flex-direction: column; justify-content: center; }}
+.stat .ab {{ font-family: Lora; font-weight: 700; font-size: 5.8pt; text-transform: uppercase; letter-spacing: 0; line-height: 1.1; white-space: nowrap; }}
+.stat .hint {{ font-size: 5.3pt; line-height: 1.12; color: #555; margin-top: .3mm; }}
+.choices {{ display: flex; flex-direction: column; gap: 1.2mm; }}
+.choice {{ display: flex; align-items: flex-end; gap: 1.6mm; height: 7.6mm; }}
+.choice b {{ font-family: Lora; font-weight: 700; font-size: 8.4pt; white-space: nowrap; padding-bottom: .4mm; }}
+.choice .fill {{ height: 6mm; }}
+.choice .num {{ flex: none; width: 6.4mm; height: 6.4mm; border: 0.4mm solid {ACC}; border-radius: 1.2mm; }}
+.danger {{ border: 0.45mm solid {ACC}; border-radius: 2mm; background: {TINT}; padding: 1.8mm 2.6mm 1.6mm; }}
 .dtop {{ display: flex; align-items: center; justify-content: space-between; }}
 .danger .lbl {{ font-family: Lora; font-weight: 700; font-size: 10pt; text-transform: uppercase; letter-spacing: .05em; }}
 .danger i {{ width: 6mm; height: 6mm; border: 0.45mm solid {INK}; border-radius: 50%; display: inline-block; background: #fff; }}
-.dnote {{ font-size: 6.8pt; font-style: italic; color: {INK}; margin-top: 1.4mm; text-align: center; }}
+.dnote {{ font-size: 6.8pt; font-style: italic; color: {INK}; margin-top: 1.2mm; text-align: center; }}
+.blankchar .stat .val {{ background: #fff; border-right: 0.45mm solid {INK}; }}
 /* tablas */
 .head {{ display: flex; align-items: center; gap: 2.5mm; border-bottom: 0.4mm solid {INK}; padding-bottom: 1.8mm; margin-bottom: 2mm; }}
 .hico {{ width: 13mm; height: 13mm; flex: none; }}
