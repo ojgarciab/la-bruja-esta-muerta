@@ -188,7 +188,7 @@ def d10_badge(n=None):
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="{line}" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
 <text x="50" y="59" text-anchor="middle" font-size="{30 if n == 10 else 36}" font-family="Lora" font-weight="700" fill="{W}">{num}</text></svg>'''
 
-CHOICES = ["El pueblo es…", "El cazador es…", "La bruja te enseñó…"]
+CHOICES = ["El pueblo es", "El cazador es", "La bruja te enseñó"]
 
 def char_card(e=None):
     if e:
@@ -251,14 +251,14 @@ html, body {{ background: #fff; color: {INK}; font-family: "Caladea", "Liberatio
 .foot {{ margin-top: auto; padding-top: 0.8mm; text-align: center; font-size: 5.6pt; letter-spacing: .06em; color: {ACC}; font-family: Lora; font-style: italic; }}
 /* personaje */
 .char {{ padding: 2.8mm 3mm 2.6mm; justify-content: space-between; }}
-.badge {{ position: absolute; top: 1.8mm; right: 2mm; width: 11mm; height: 11mm; }}
+.badge {{ position: absolute; top: 1.2mm; right: 2mm; width: 11mm; height: 11mm; }}
 .top {{ display: flex; gap: 3mm; align-items: center; }}
 .portrait {{ width: 32mm; height: 32mm; flex: none; border-radius: 50%; background: {TINT}; border: 0.6mm solid {ACC}; display: flex; align-items: center; justify-content: center; }}
 .portrait .ico {{ width: 24mm; height: 24mm; }}
 .portrait.blank {{ background: #fff; border-style: dashed; }}
 .portrait.blank span {{ font-size: 8pt; color: #999; font-style: italic; }}
 .ttl {{ flex: 1; min-width: 0; }}
-.sp {{ font-family: Lora; font-weight: 700; font-size: 21pt; line-height: 1; color: {INK}; height: 9mm; padding-right: 11mm; }}
+.sp {{ font-family: Lora; font-weight: 700; font-size: 21pt; line-height: 1; color: {INK}; height: 10mm; padding-right: 11mm; }}
 .sp.blankline {{ display: flex; align-items: flex-end; height: 8mm; margin-bottom: 1mm; }}
 .fill {{ flex: 1; border-bottom: 0.3mm solid {INK}; height: 5mm; }}
 .stats {{ display: grid; grid-template-columns: 1fr 1fr; gap: 1.4mm; }}
@@ -267,11 +267,11 @@ html, body {{ background: #fff; color: {INK}; font-family: "Caladea", "Liberatio
 .stat .txt {{ flex: 1; min-width: 0; padding: .7mm .8mm; display: flex; flex-direction: column; justify-content: center; }}
 .stat .ab {{ font-family: Lora; font-weight: 700; font-size: 5.8pt; text-transform: uppercase; letter-spacing: 0; line-height: 1.1; white-space: nowrap; }}
 .stat .hint {{ font-size: 5.3pt; line-height: 1.12; color: #555; margin-top: .3mm; }}
-.choices {{ display: flex; flex-direction: column; gap: 1.2mm; }}
-.choice {{ display: flex; align-items: flex-end; gap: 1.6mm; height: 7.6mm; }}
-.choice b {{ font-family: Lora; font-weight: 700; font-size: 8.4pt; white-space: nowrap; padding-bottom: .4mm; }}
-.choice .fill {{ height: 6mm; }}
-.choice .num {{ flex: none; width: 6.4mm; height: 6.4mm; border: 0.4mm solid {ACC}; border-radius: 1.2mm; }}
+.choices {{ flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; padding: 1mm 0 2mm; }}
+.choice {{ display: flex; align-items: flex-end; gap: 1.8mm; height: 8.4mm; }}
+.choice b {{ font-family: Lora; font-weight: 700; font-size: 8.8pt; white-space: nowrap; padding-bottom: .4mm; }}
+.choice .fill {{ height: 7mm; }}
+.choice .num {{ flex: none; width: 7mm; height: 7mm; border: 0.4mm solid {ACC}; border-radius: 1.2mm; }}
 .danger {{ border: 0.45mm solid {ACC}; border-radius: 2mm; background: {TINT}; padding: 1.8mm 2.6mm 1.6mm; }}
 .dtop {{ display: flex; align-items: center; justify-content: space-between; }}
 .danger .lbl {{ font-family: Lora; font-weight: 700; font-size: 10pt; text-transform: uppercase; letter-spacing: .05em; }}
