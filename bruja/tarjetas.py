@@ -21,6 +21,7 @@ from .iconos import icon
 class Tarjeta:
     html: str
     estilos: dict = field(default_factory=dict)  # {ámbito: css ya aislado}
+    formato: str = "completa"  # "completa" (99x95 mm, 2x3 por hoja) o "media" (99x47.5 mm, 2x6)
 
 
 def aislar(ambito, css):
@@ -55,9 +56,9 @@ class Modelo:
         return getattr(self, nombre)()
 
 
-def _tarjeta(ambito, css, interior, clases=""):
+def _tarjeta(ambito, css, interior, clases="", formato="completa"):
     return Tarjeta(f'<div class="card"><div class="frame {ambito} {clases}">{interior}</div></div>',
-                   {ambito: aislar(ambito, css)})
+                   {ambito: aislar(ambito, css)}, formato)
 
 
 # ---------------------------------------------------------------- personajes
@@ -276,6 +277,35 @@ class ComoJugar(Modelo):
   <p class="prose">Si sacas una tirada <b>igual o menor</b> que tus puntos de peligro, puedes sufrir una <b>grave desgracia</b>, quedar <b>atrapado</b> o <b>morir</b>.</p>''')
 
 
+CSS_TB_MEDIA = f'''
+& {{ padding: 1.5mm 2.4mm 1.3mm; border-radius: 2.6mm; }}
+.head {{ gap: 1.8mm; padding-bottom: .8mm; margin-bottom: .6mm; border-bottom: 0.35mm solid {INK}; }}
+.hico {{ width: 7mm; height: 7mm; }}
+.ht {{ font-size: 10.5pt; line-height: 1; }}
+.hs {{ font-size: 5.8pt; margin-top: .3mm; }}
+.d10 {{ font-size: 7pt; padding: .4mm 1.3mm; border-radius: 1.1mm; }}
+.grid {{ column-gap: 2.4mm; row-gap: 0; margin-bottom: 0; min-height: 0; }}
+.grid li {{ gap: 1.2mm; font-size: 7pt; line-height: 1.04; min-height: 0; }}
+.grid .n {{ width: 4mm; height: 4mm; font-size: 5.8pt; }}
+.grid li:nth-child(5n) {{ border-bottom: none; }}
+&.secret .head {{ border-bottom-style: dashed; }}
+&.secret .grid .n {{ background: {ACC}; }}
+'''
+
+CSS_TB_RESULTADO = f'''
+& {{ padding: 1.8mm 3mm 2mm; }}
+.head {{ gap: 2mm; padding-bottom: 1mm; margin-bottom: 0; border-bottom: 0.35mm solid {INK}; }}
+.hico {{ width: 8mm; height: 8mm; }}
+.ht {{ font-size: 12pt; line-height: 1; }}
+.hs {{ font-size: 6pt; margin-top: .3mm; }}
+.res {{ flex: 1; display: flex; align-items: center; gap: 3.5mm; min-height: 0; }}
+.badge {{ flex: none; width: 19mm; height: 19mm; }}
+.txt {{ flex: 1; font-size: 16pt; line-height: 1.15; }}
+.txt.largo {{ font-size: 14pt; }}
+&.secret .head {{ border-bottom-style: dashed; }}
+'''
+
+
 class Tabla(Modelo):
     """Tabla d10 de diez entradas en dos columnas."""
 
@@ -292,6 +322,28 @@ class Tabla(Modelo):
   <div class="head">{icon(self.icono, "hico")}<div><div class="ht">{self.titulo}</div><div class="hs">{self.subtitulo}</div></div><div class="d10">d10</div></div>
   <ol class="grid">{rows}</ol>
   {FOOT}''', "tbl secret" if self.secreta else "tbl")
+
+    @diseno
+    def media_altura(self):
+        """Mitad de alto (99x47.5 mm, 12 por hoja): cabecera compacta y sin pie."""
+        rows = "".join(f'<li><span class="n">{i}</span><span>{html.escape(t)}</span></li>' for i, t in enumerate(self.entradas, 1))
+        return _tarjeta("tb-media", CSS_TB_MEDIA, f'''
+  <div class="head">{icon(self.icono, "hico")}<div><div class="ht">{self.titulo}</div><div class="hs">{self.subtitulo}</div></div><div class="d10">d10</div></div>
+  <ol class="grid">{rows}</ol>''', "tbl secret" if self.secreta else "tbl", formato="media")
+
+    def resultado(self, n):
+        """Tarjeta de media altura con un único resultado (n = 1..10) de la tabla."""
+        texto = self.entradas[n - 1]
+        largo = " largo" if len(texto) > 40 else ""
+        return _tarjeta("tb-resultado", CSS_TB_RESULTADO, f'''
+  <div class="head">{icon(self.icono, "hico")}<div><div class="ht">{self.titulo}</div><div class="hs">{self.subtitulo}</div></div></div>
+  <div class="res">{_dado_d10(n)}<div class="txt{largo}">{html.escape(texto)}</div></div>''',
+                        "tbl secret" if self.secreta else "tbl", formato="media")
+
+    @diseno
+    def por_resultado(self):
+        """La tabla partida en 10 tarjetas de media altura, una por resultado del d10."""
+        return [self.resultado(n) for n in range(1, len(self.entradas) + 1)]
 
 
 # ------------------------------------------------------------------- catálogo

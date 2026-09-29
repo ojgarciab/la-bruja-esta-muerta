@@ -1,17 +1,19 @@
-"""Documento A4: coloca tarjetas en rejillas de 2x3 y lo exporta a HTML o PDF."""
+"""Documento A4: coloca tarjetas en rejillas de 2x3 (o 2x6 si son de media altura) y lo exporta a HTML o PDF."""
 from pathlib import Path
 
-from .estilo import CSS_BASE, FONTS
+from .estilo import CSS_BASE
 from .tarjetas import Tarjeta
+from .tipografia import css_incrustado
 
-POR_PAGINA = 6
+POR_PAGINA = {"completa": 6, "media": 12}  # tarjetas por hoja según su formato
 
 
 class Documento:
     """Colección ordenada de tarjetas agrupadas en secciones.
 
     Cada sección empieza en una página nueva y rotula el pie de sus hojas
-    ("Personajes 1/2 · recorta por la línea discontinua").
+    ("Personajes 1/2 · recorta por la línea discontinua"). Las tarjetas de
+    distinto formato nunca comparten hoja: al cambiar de formato se pasa página.
     """
 
     def __init__(self, titulo="La bruja está muerta · Tarjetas"):
@@ -35,12 +37,22 @@ class Documento:
                 self.add(*t)
         return self
 
+    @staticmethod
+    def _trozos(ts):
+        """Parte una sección en hojas: tramos del mismo formato, llenados hasta su capacidad."""
+        trozos = []
+        for t in ts:
+            if trozos and trozos[-1][0].formato == t.formato and len(trozos[-1]) < POR_PAGINA[t.formato]:
+                trozos[-1].append(t)
+            else:
+                trozos.append([t])
+        return trozos
+
     def _paginas(self):
-        secciones = [(e, ts) for e, ts in self._secciones if ts]
-        total = sum(-(-len(ts) // POR_PAGINA) for _, ts in secciones)
+        secciones = [(e, self._trozos(ts)) for e, ts in self._secciones if ts]
+        total = sum(len(tr) for _, tr in secciones)
         n = 0
-        for etiqueta, ts in secciones:
-            trozos = [ts[i:i + POR_PAGINA] for i in range(0, len(ts), POR_PAGINA)]
+        for etiqueta, trozos in secciones:
             for i, trozo in enumerate(trozos, 1):
                 n += 1
                 if not etiqueta:
@@ -58,11 +70,11 @@ class Documento:
                 estilos.update(t.estilos)
         css = CSS_BASE + "\n".join(estilos.values())
         body = "".join(
-            f'<section class="page">{"".join(t.html for t in trozo)}'
+            f'<section class="page {trozo[0].formato}">{"".join(t.html for t in trozo)}'
             f'<div class="credit">{rotulo} · recorta por la línea discontinua</div></section>'
             for rotulo, trozo in self._paginas())
         return (f'<!doctype html><html lang="es"><head><meta charset="utf-8"><title>{self.titulo}</title>'
-                f'{FONTS}<style>{css}</style></head><body>{body}</body></html>')
+                f'<style>{css_incrustado()}{css}</style></head><body>{body}</body></html>')
 
     def render(self, ruta):
         """Escribe el documento; la extensión (.pdf o .html) decide el formato."""
@@ -86,7 +98,7 @@ def _a_pdf(documento_html, ruta):
         except Exception:
             browser = p.chromium.launch()  # requiere `playwright install chromium`
         pg = browser.new_page()
-        pg.set_content(documento_html, wait_until="networkidle")
+        pg.set_content(documento_html, wait_until="load")  # todo va incrustado: no hay red que esperar
         pg.evaluate("document.fonts.ready")
         pg.pdf(path=str(ruta), format="A4", print_background=True,
                prefer_css_page_size=True, margin={"top": "0", "right": "0", "bottom": "0", "left": "0"})

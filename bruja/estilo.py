@@ -5,7 +5,6 @@ ACC = "#6b3f8f"
 TINT = "#efe8f4"
 W = "#ffffff"
 
-FONTS = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=block">'
 
 FOOT = '<div class="foot">La bruja está muerta · un RPG acerca de la muerte</div>'
 
@@ -15,6 +14,8 @@ CSS_BASE = f'''
 html, body {{ background: #fff; color: {INK}; font-family: "Caladea", "Liberation Serif", serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
 .page {{ width: 210mm; height: 297mm; padding: 6mm; display: grid; grid-template-columns: 99mm 99mm; grid-template-rows: repeat(3, 95mm); page-break-after: always; position: relative; }}
 .page:last-child {{ page-break-after: auto; }}
+.page.media {{ grid-template-rows: repeat(6, 47.5mm); }}
+.page.media .card {{ padding: 1.8mm; }}
 .card {{ outline: 0.25mm dashed #9a9a9a; outline-offset: -0.125mm; padding: 2.6mm; overflow: hidden; }}
 .frame {{ height: 100%; border: 0.6mm solid {INK}; border-radius: 3mm; padding: 2.6mm 3mm 2mm; position: relative; display: flex; flex-direction: column; box-shadow: inset 0 0 0 0.8mm #fff, inset 0 0 0 1.05mm {ACC}; }}
 .foot {{ margin-top: auto; padding-top: 0.8mm; text-align: center; font-size: 5.6pt; letter-spacing: .06em; color: {ACC}; font-family: Lora; font-style: italic; }}
