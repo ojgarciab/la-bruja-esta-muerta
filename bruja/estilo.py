@@ -16,6 +16,8 @@ html, body {{ background: #fff; color: {INK}; font-family: "Caladea", "Liberatio
 .page:last-child {{ page-break-after: auto; }}
 .page.media {{ grid-template-rows: repeat(6, 47.5mm); }}
 .page.media .card {{ padding: 1.8mm; }}
+.page.quinta {{ grid-template-rows: repeat(5, 57mm); }}
+.page.quinta .card {{ padding: 2mm; }}
 .card {{ outline: 0.25mm dashed #9a9a9a; outline-offset: -0.125mm; padding: 2.6mm; overflow: hidden; }}
 .frame {{ height: 100%; border: 0.6mm solid {INK}; border-radius: 3mm; padding: 2.6mm 3mm 2mm; position: relative; display: flex; flex-direction: column; box-shadow: inset 0 0 0 0.8mm #fff, inset 0 0 0 1.05mm {ACC}; }}
 .foot {{ margin-top: auto; padding-top: 0.8mm; text-align: center; font-size: 5.6pt; letter-spacing: .06em; color: {ACC}; font-family: Lora; font-style: italic; }}

@@ -21,7 +21,7 @@ from .iconos import icon
 class Tarjeta:
     html: str
     estilos: dict = field(default_factory=dict)  # {ámbito: css ya aislado}
-    formato: str = "completa"  # "completa" (99x95 mm, 2x3 por hoja) o "media" (99x47.5 mm, 2x6)
+    formato: str = "completa"  # "completa" (99x95 mm, 2x3), "media" (99x47.5 mm, 2x6) o "quinta" (99x57 mm, 2x5)
 
 
 def aislar(ambito, css):
@@ -305,6 +305,19 @@ CSS_TB_RESULTADO = f'''
 &.secret .head {{ border-bottom-style: dashed; }}
 '''
 
+CSS_TB_RESULTADO_5X2 = f'''
+& {{ padding: 2.2mm 3.4mm 2.4mm; }}
+.head {{ gap: 2.2mm; padding-bottom: 1.2mm; margin-bottom: 0; border-bottom: 0.4mm solid {INK}; }}
+.hico {{ width: 9.5mm; height: 9.5mm; }}
+.ht {{ font-size: 13pt; line-height: 1; }}
+.hs {{ font-size: 6.6pt; margin-top: .4mm; }}
+.res {{ flex: 1; display: flex; align-items: center; gap: 4mm; min-height: 0; }}
+.badge {{ flex: none; width: 24mm; height: 24mm; }}
+.txt {{ flex: 1; font-size: 18pt; line-height: 1.15; }}
+.txt.largo {{ font-size: 15.5pt; }}
+&.secret .head {{ border-bottom-style: dashed; }}
+'''
+
 
 class Tabla(Modelo):
     """Tabla d10 de diez entradas en dos columnas."""
@@ -331,19 +344,25 @@ class Tabla(Modelo):
   <div class="head">{icon(self.icono, "hico")}<div><div class="ht">{self.titulo}</div><div class="hs">{self.subtitulo}</div></div><div class="d10">d10</div></div>
   <ol class="grid">{rows}</ol>''', "tbl secret" if self.secreta else "tbl", formato="media")
 
-    def resultado(self, n):
-        """Tarjeta de media altura con un único resultado (n = 1..10) de la tabla."""
+    def resultado(self, n, formato="media"):
+        """Tarjeta con un único resultado (n = 1..10): formato "media" (2x6) o "quinta" (2x5)."""
         texto = self.entradas[n - 1]
         largo = " largo" if len(texto) > 40 else ""
-        return _tarjeta("tb-resultado", CSS_TB_RESULTADO, f'''
+        ambito, css = ("tb-resultado", CSS_TB_RESULTADO) if formato == "media" else ("tb-resultado-5x2", CSS_TB_RESULTADO_5X2)
+        return _tarjeta(ambito, css, f'''
   <div class="head">{icon(self.icono, "hico")}<div><div class="ht">{self.titulo}</div><div class="hs">{self.subtitulo}</div></div></div>
   <div class="res">{_dado_d10(n)}<div class="txt{largo}">{html.escape(texto)}</div></div>''',
-                        "tbl secret" if self.secreta else "tbl", formato="media")
+                        "tbl secret" if self.secreta else "tbl", formato=formato)
 
     @diseno
     def por_resultado(self):
-        """La tabla partida en 10 tarjetas de media altura, una por resultado del d10."""
+        """La tabla partida en 10 tarjetas de media altura (2x6 por hoja), una por resultado."""
         return [self.resultado(n) for n in range(1, len(self.entradas) + 1)]
+
+    @diseno
+    def por_resultado_5x2(self):
+        """La tabla partida en 10 tarjetas de 99x57 mm (2x5): cada tabla ocupa una hoja justa."""
+        return [self.resultado(n, "quinta") for n in range(1, len(self.entradas) + 1)]
 
 
 # ------------------------------------------------------------------- catálogo

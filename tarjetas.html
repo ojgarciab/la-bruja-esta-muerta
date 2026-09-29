@@ -150,6 +150,8 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 .page:last-child { page-break-after: auto; }
 .page.media { grid-template-rows: repeat(6, 47.5mm); }
 .page.media .card { padding: 1.8mm; }
+.page.quinta { grid-template-rows: repeat(5, 57mm); }
+.page.quinta .card { padding: 2mm; }
 .card { outline: 0.25mm dashed #9a9a9a; outline-offset: -0.125mm; padding: 2.6mm; overflow: hidden; }
 .frame { height: 100%; border: 0.6mm solid #2f2340; border-radius: 3mm; padding: 2.6mm 3mm 2mm; position: relative; display: flex; flex-direction: column; box-shadow: inset 0 0 0 0.8mm #fff, inset 0 0 0 1.05mm #6b3f8f; }
 .foot { margin-top: auto; padding-top: 0.8mm; text-align: center; font-size: 5.6pt; letter-spacing: .06em; color: #6b3f8f; font-family: Lora; font-style: italic; }
@@ -174,6 +176,9 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 .chip { border: 0.35mm solid #2f2340; border-radius: 1.5mm; text-align: center; padding: .6mm .3mm; }
 .chip b { display: block; font-family: Lora; font-size: 12pt; line-height: 1.1; }
 .chip span { font-size: 5.6pt; display: block; line-height: 1.1; }
+
+
+
 .pj-tiradas { padding: 2.8mm 3mm 2.6mm; justify-content: space-between; }
 .pj-tiradas .badge { position: absolute; top: 1.2mm; right: 2mm; width: 11mm; height: 11mm; }
 .pj-tiradas .top { display: flex; gap: 3mm; align-items: center; }
@@ -202,19 +207,66 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 .pj-tiradas .danger i { width: 6mm; height: 6mm; border: 0.45mm solid #2f2340; border-radius: 50%; display: inline-block; background: #fff; }
 .pj-tiradas .dnote { font-size: 6.8pt; font-style: italic; color: #2f2340; margin-top: 1.2mm; text-align: center; }
 .pj-tiradas.blankchar .stat .val { background: #fff; border-right: 0.45mm solid #2f2340; }
-
-
-
-.tb-resultado { padding: 1.8mm 3mm 2mm; }
-.tb-resultado .head { gap: 2mm; padding-bottom: 1mm; margin-bottom: 0; border-bottom: 0.35mm solid #2f2340; }
-.tb-resultado .hico { width: 8mm; height: 8mm; }
-.tb-resultado .ht { font-size: 12pt; line-height: 1; }
-.tb-resultado .hs { font-size: 6pt; margin-top: .3mm; }
-.tb-resultado .res { flex: 1; display: flex; align-items: center; gap: 3.5mm; min-height: 0; }
-.tb-resultado .badge { flex: none; width: 19mm; height: 19mm; }
-.tb-resultado .txt { flex: 1; font-size: 16pt; line-height: 1.15; }
-.tb-resultado .txt.largo { font-size: 14pt; }
-.tb-resultado.secret .head { border-bottom-style: dashed; }</style></head><body><section class="page completa"><div class="card"><div class="frame pj-tiradas ">
+.tb-resultado-5x2 { padding: 2.2mm 3.4mm 2.4mm; }
+.tb-resultado-5x2 .head { gap: 2.2mm; padding-bottom: 1.2mm; margin-bottom: 0; border-bottom: 0.4mm solid #2f2340; }
+.tb-resultado-5x2 .hico { width: 9.5mm; height: 9.5mm; }
+.tb-resultado-5x2 .ht { font-size: 13pt; line-height: 1; }
+.tb-resultado-5x2 .hs { font-size: 6.6pt; margin-top: .4mm; }
+.tb-resultado-5x2 .res { flex: 1; display: flex; align-items: center; gap: 4mm; min-height: 0; }
+.tb-resultado-5x2 .badge { flex: none; width: 24mm; height: 24mm; }
+.tb-resultado-5x2 .txt { flex: 1; font-size: 18pt; line-height: 1.15; }
+.tb-resultado-5x2 .txt.largo { font-size: 15.5pt; }
+.tb-resultado-5x2.secret .head { border-bottom-style: dashed; }</style></head><body><section class="page completa"><div class="card"><div class="frame tx-intro ">
+  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 42 L86 42 Q92 80 64 86 L36 86 Q8 80 14 42 Z" fill="#2f2340"/>
+<rect x="8" y="36" width="84" height="8" rx="4" fill="#2f2340"/>
+<path d="M26 86 L20 96 M74 86 L80 96" stroke="#2f2340" stroke-width="4" stroke-linecap="round"/>
+<circle cx="40" cy="26" r="6" fill="none" stroke="#2f2340" stroke-width="2.4"/><circle cx="58" cy="16" r="4" fill="none" stroke="#2f2340" stroke-width="2.2"/><circle cx="62" cy="30" r="3" fill="none" stroke="#2f2340" stroke-width="2"/>
+<path d="M30 58 Q40 52 50 58 Q60 64 70 58" stroke="#ffffff" stroke-width="2.4" fill="none"/></svg><div><div class="ht">La bruja está muerta</div><div class="hs">Un RPG acerca de la muerte</div></div></div>
+  <p class="prose"><span class="cap">É</span>rase una vez una bruja amable, sabia y hermosa que vivía en el bosque con su familiar, y su vida era pacífica y feliz… hasta que un malvado <b>cazador de brujas</b> irrumpió en su cabaña, la destrozó y la asesinó. Ahora está <b>MUERTA</b>.</p>
+  <p class="prose">Pero si te vengas, lo matas y llevas <b>sus ojos</b> hasta el cuerpo de ella en <b>una semana</b>, ella volverá a la vida. O eso has oído. E incluso si no funciona, al menos él estará muerto.</p>
+  <p class="prose big">Eres un lindo animalito del bosque. El cazador se ha ido al pueblo, el muy cobarde. <b>Atrápalo.</b></p>
+  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame rg-mortal ">
+  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M50 6 L90 30 L90 72 L50 96 L10 72 L10 30 Z" fill="#2f2340"/>
+<path d="M50 6 L50 40 M10 30 L50 40 L90 30 M50 40 L28 84 M50 40 L72 84 M28 84 L72 84 M10 72 L28 84 M90 72 L72 84 M50 96 L28 84 M50 96 L72 84" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+<text x="50" y="72" text-anchor="middle" font-size="18" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div><div class="ht">Cómo jugar</div><div class="hs">Tira 1d10 + tu rasgo más relevante</div></div></div>
+  <p class="prose">El GM te dice qué número debes <b>igualar o superar</b>:</p>
+  <div class="chips"><div class="chip"><b>6</b><span>Simple</span></div><div class="chip"><b>7</b><span>Básica</span></div><div class="chip"><b>8</b><span>Desafiante</span></div><div class="chip"><b>9</b><span>Difícil</span></div><div class="chip"><b>10</b><span>Casi imposible</span></div></div>
+  <p class="prose">Si la tarea es peligrosa y fallas, ganas <b>1 punto de PELIGRO</b>. <b>Usar magia SIEMPRE es peligroso.</b> Los PNJ no tiran dados: tú estás obligado a tirar. Reduce tu peligro resolviendo tus problemas o huyendo de ellos.</p>
+  <p class="prose">Si sacas una tirada <b>igual o menor</b> que tus puntos de peligro, puedes sufrir una <b>grave desgracia</b>, quedar <b>atrapado</b> o <b>morir</b>.</p>
+  <p class="prose small">Recuerda: casi todo lo que es normal para un humano es muy difícil para un animal, salvo que lo dividas en pasos pequeños. No tienes pulgares oponibles y solo sabes del mundo humano lo que te enseñó la bruja. Puedes hablar con animales de tu especie o similares.</p>
+  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl">
+  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
+<path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
+<rect x="70" y="18" width="8" height="16" fill="#2f2340"/>
+<rect x="56" y="66" width="14" height="24" fill="#ffffff"/><rect x="50" y="48" width="9" height="9" fill="#ffffff"/><rect x="70" y="48" width="9" height="9" fill="#ffffff"/>
+<rect x="21" y="60" width="10" height="10" fill="#ffffff"/></svg><div><div class="ht">El pueblo es…</div><div class="hs">Tirad para saber cómo es el pueblo</div></div><div class="d10">d10</div></div>
+  <ol class="grid"><li><span class="n">1</span><span>Bajo el yugo de un barón</span></li><li><span class="n">2</span><span>Lleno de alegres gnomos</span></li><li><span class="n">3</span><span>Controlado por un siniestro culto</span></li><li><span class="n">4</span><span>Devotamente religioso</span></li><li><span class="n">5</span><span>Increíblemente supersticioso</span></li><li><span class="n">6</span><span>En guerra con las tribus del bosque</span></li><li><span class="n">7</span><span>Construido alrededor de una academia de magos</span></li><li><span class="n">8</span><span>Lleno de mineros</span></li><li><span class="n">9</span><span>Sombrío y peligroso</span></li><li><span class="n">10</span><span>Ofensivamente perfecto</span></li></ol>
+  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl">
+  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
+<ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
+<rect x="30" y="44" width="40" height="8" fill="#ffffff"/>
+<rect x="43" y="42" width="14" height="12" fill="#2f2340" stroke="#ffffff" stroke-width="2.4"/>
+<path d="M18 82 L82 82 M50 74 L50 90" stroke="#2f2340" stroke-width="3"/>
+<path d="M18 82 Q50 70 82 82" stroke="#2f2340" stroke-width="2" fill="none"/></svg><div><div class="ht">El cazador es…</div><div class="hs">Tirad para conocer a vuestro enemigo</div></div><div class="d10">d10</div></div>
+  <ol class="grid"><li><span class="n">1</span><span>Fuerte y armado</span></li><li><span class="n">2</span><span>Viejo y sabio</span></li><li><span class="n">3</span><span>Borracho y violento</span></li><li><span class="n">4</span><span>Piadoso y agresivo</span></li><li><span class="n">5</span><span>Oculto y cobarde</span></li><li><span class="n">6</span><span>Mágico y celoso</span></li><li><span class="n">7</span><span>Inteligente y cruel</span></li><li><span class="n">8</span><span>Clonado y oculto</span></li><li><span class="n">9</span><span>Alegre y bienintencionado</span></li><li><span class="n">10</span><span>Testarudo y salvaje</span></li></ol>
+  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl secret">
+  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
+<circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
+<circle cx="46" cy="46" r="3" fill="#ffffff"/>
+<path d="M50 6 L50 16 M24 14 L30 22 M76 14 L70 22" stroke="#2f2340" stroke-width="3" stroke-linecap="round"/></svg><div><div class="ht">El giro</div><div class="hs">Solo para el GM · tira en secreto</div></div><div class="d10">d10</div></div>
+  <ol class="grid"><li><span class="n">1</span><span>El pueblo está involucrado</span></li><li><span class="n">2</span><span>Una bruja rival le tendió una trampa</span></li><li><span class="n">3</span><span>El cazador no lo hizo</span></li><li><span class="n">4</span><span>El cazador te está esperando</span></li><li><span class="n">5</span><span>El pueblo celebra un festival</span></li><li><span class="n">6</span><span>El cazador murió y lo están enterrando</span></li><li><span class="n">7</span><span>Hay dos cazadores (rivales) en la ciudad</span></li><li><span class="n">8</span><span>El pueblo está abandonado</span></li><li><span class="n">9</span><span>El cazador atrapó a un sospechoso y lo está interrogando</span></li><li><span class="n">10</span><span>El pueblo lo odia</span></li></ol>
+  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl">
+  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
+<circle cx="50" cy="50" r="8" fill="#ffffff"/>
+<path d="M84 12 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3 z M16 70 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2 z" fill="#2f2340"/></svg><div><div class="ht">Tu bruja te enseñó…</div><div class="hs">Un hechizo · usar magia siempre es peligroso</div></div><div class="d10">d10</div></div>
+  <ol class="grid"><li><span class="n">1</span><span>Mano invisible</span></li><li><span class="n">2</span><span>Conjurar luz</span></li><li><span class="n">3</span><span>Hablar humano</span></li><li><span class="n">4</span><span>Bloquear / desbloquear, abrir / cerrar</span></li><li><span class="n">5</span><span>Conjurar comida</span></li><li><span class="n">6</span><span>Crear fuego</span></li><li><span class="n">7</span><span>Ordenar, limpiar y reparar</span></li><li><span class="n">8</span><span>Hacer crecer una planta</span></li><li><span class="n">9</span><span>Distraer / confundir</span></li><li><span class="n">10</span><span>Hacer que un libro se lea en voz alta solo</span></li></ol>
+  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="credit">Tiradas de historia · recorta por la línea discontinua</div></section><section class="page completa"><div class="card"><div class="frame pj-tiradas ">
   <svg class="badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
@@ -386,57 +438,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff"></text></svg>
   <div class="top"><div class="portrait blank"><span>Retrato</span></div><div class="ttl"><div class="sp blankline"><span class="fill"></span></div><div class="stats"><div class="stat"><div class="val"></div><div class="txt"><div class="ab">Inteligencia</div><div class="hint">hablar con humanos, entenderlos</div></div></div><div class="stat"><div class="val"></div><div class="txt"><div class="ab">Fiereza</div><div class="hint">asustar, arrastrar, empujar, morder</div></div></div><div class="stat"><div class="val"></div><div class="txt"><div class="ab">Astucia</div><div class="hint">escabullirse, robar, esconderse</div></div></div><div class="stat"><div class="val"></div><div class="txt"><div class="ab">Rapidez</div><div class="hint">superar, escalar, evadir</div></div></div></div></div></div>
   <div class="choices"><div class="choice"><b>El pueblo es</b><span class="fill"></span><span class="num"></span></div><div class="choice"><b>El cazador es</b><span class="fill"></span><span class="num"></span></div><div class="choice"><b>La bruja te enseñó</b><span class="fill"></span><span class="num"></span></div></div>
-  <div class="danger"><div class="dtop"><span class="lbl">Peligro</span><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="dnote">Si tu tirada es <b>igual o menor</b> que tu peligro: grave desgracia, atrapado… o muerte.</div></div></div></div><div class="credit">Personajes 2/2 · recorta por la línea discontinua</div></section><section class="page completa"><div class="card"><div class="frame tx-intro ">
-  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M14 42 L86 42 Q92 80 64 86 L36 86 Q8 80 14 42 Z" fill="#2f2340"/>
-<rect x="8" y="36" width="84" height="8" rx="4" fill="#2f2340"/>
-<path d="M26 86 L20 96 M74 86 L80 96" stroke="#2f2340" stroke-width="4" stroke-linecap="round"/>
-<circle cx="40" cy="26" r="6" fill="none" stroke="#2f2340" stroke-width="2.4"/><circle cx="58" cy="16" r="4" fill="none" stroke="#2f2340" stroke-width="2.2"/><circle cx="62" cy="30" r="3" fill="none" stroke="#2f2340" stroke-width="2"/>
-<path d="M30 58 Q40 52 50 58 Q60 64 70 58" stroke="#ffffff" stroke-width="2.4" fill="none"/></svg><div><div class="ht">La bruja está muerta</div><div class="hs">Un RPG acerca de la muerte</div></div></div>
-  <p class="prose"><span class="cap">É</span>rase una vez una bruja amable, sabia y hermosa que vivía en el bosque con su familiar, y su vida era pacífica y feliz… hasta que un malvado <b>cazador de brujas</b> irrumpió en su cabaña, la destrozó y la asesinó. Ahora está <b>MUERTA</b>.</p>
-  <p class="prose">Pero si te vengas, lo matas y llevas <b>sus ojos</b> hasta el cuerpo de ella en <b>una semana</b>, ella volverá a la vida. O eso has oído. E incluso si no funciona, al menos él estará muerto.</p>
-  <p class="prose big">Eres un lindo animalito del bosque. El cazador se ha ido al pueblo, el muy cobarde. <b>Atrápalo.</b></p>
-  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame rg-mortal ">
-  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M50 6 L90 30 L90 72 L50 96 L10 72 L10 30 Z" fill="#2f2340"/>
-<path d="M50 6 L50 40 M10 30 L50 40 L90 30 M50 40 L28 84 M50 40 L72 84 M28 84 L72 84 M10 72 L28 84 M90 72 L72 84 M50 96 L28 84 M50 96 L72 84" stroke="#ffffff" stroke-width="1.8" fill="none"/>
-<text x="50" y="72" text-anchor="middle" font-size="18" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div><div class="ht">Cómo jugar</div><div class="hs">Tira 1d10 + tu rasgo más relevante</div></div></div>
-  <p class="prose">El GM te dice qué número debes <b>igualar o superar</b>:</p>
-  <div class="chips"><div class="chip"><b>6</b><span>Simple</span></div><div class="chip"><b>7</b><span>Básica</span></div><div class="chip"><b>8</b><span>Desafiante</span></div><div class="chip"><b>9</b><span>Difícil</span></div><div class="chip"><b>10</b><span>Casi imposible</span></div></div>
-  <p class="prose">Si la tarea es peligrosa y fallas, ganas <b>1 punto de PELIGRO</b>. <b>Usar magia SIEMPRE es peligroso.</b> Los PNJ no tiran dados: tú estás obligado a tirar. Reduce tu peligro resolviendo tus problemas o huyendo de ellos.</p>
-  <p class="prose">Si sacas una tirada <b>igual o menor</b> que tus puntos de peligro, puedes sufrir una <b>grave desgracia</b>, quedar <b>atrapado</b> o <b>morir</b>.</p>
-  <p class="prose small">Recuerda: casi todo lo que es normal para un humano es muy difícil para un animal, salvo que lo dividas en pasos pequeños. No tienes pulgares oponibles y solo sabes del mundo humano lo que te enseñó la bruja. Puedes hablar con animales de tu especie o similares.</p>
-  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl">
-  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
-<path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
-<rect x="70" y="18" width="8" height="16" fill="#2f2340"/>
-<rect x="56" y="66" width="14" height="24" fill="#ffffff"/><rect x="50" y="48" width="9" height="9" fill="#ffffff"/><rect x="70" y="48" width="9" height="9" fill="#ffffff"/>
-<rect x="21" y="60" width="10" height="10" fill="#ffffff"/></svg><div><div class="ht">El pueblo es…</div><div class="hs">Tirad para saber cómo es el pueblo</div></div><div class="d10">d10</div></div>
-  <ol class="grid"><li><span class="n">1</span><span>Bajo el yugo de un barón</span></li><li><span class="n">2</span><span>Lleno de alegres gnomos</span></li><li><span class="n">3</span><span>Controlado por un siniestro culto</span></li><li><span class="n">4</span><span>Devotamente religioso</span></li><li><span class="n">5</span><span>Increíblemente supersticioso</span></li><li><span class="n">6</span><span>En guerra con las tribus del bosque</span></li><li><span class="n">7</span><span>Construido alrededor de una academia de magos</span></li><li><span class="n">8</span><span>Lleno de mineros</span></li><li><span class="n">9</span><span>Sombrío y peligroso</span></li><li><span class="n">10</span><span>Ofensivamente perfecto</span></li></ol>
-  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl">
-  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
-<ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
-<rect x="30" y="44" width="40" height="8" fill="#ffffff"/>
-<rect x="43" y="42" width="14" height="12" fill="#2f2340" stroke="#ffffff" stroke-width="2.4"/>
-<path d="M18 82 L82 82 M50 74 L50 90" stroke="#2f2340" stroke-width="3"/>
-<path d="M18 82 Q50 70 82 82" stroke="#2f2340" stroke-width="2" fill="none"/></svg><div><div class="ht">El cazador es…</div><div class="hs">Tirad para conocer a vuestro enemigo</div></div><div class="d10">d10</div></div>
-  <ol class="grid"><li><span class="n">1</span><span>Fuerte y armado</span></li><li><span class="n">2</span><span>Viejo y sabio</span></li><li><span class="n">3</span><span>Borracho y violento</span></li><li><span class="n">4</span><span>Piadoso y agresivo</span></li><li><span class="n">5</span><span>Oculto y cobarde</span></li><li><span class="n">6</span><span>Mágico y celoso</span></li><li><span class="n">7</span><span>Inteligente y cruel</span></li><li><span class="n">8</span><span>Clonado y oculto</span></li><li><span class="n">9</span><span>Alegre y bienintencionado</span></li><li><span class="n">10</span><span>Testarudo y salvaje</span></li></ol>
-  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl secret">
-  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
-<circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
-<circle cx="46" cy="46" r="3" fill="#ffffff"/>
-<path d="M50 6 L50 16 M24 14 L30 22 M76 14 L70 22" stroke="#2f2340" stroke-width="3" stroke-linecap="round"/></svg><div><div class="ht">El giro</div><div class="hs">Solo para el GM · tira en secreto</div></div><div class="d10">d10</div></div>
-  <ol class="grid"><li><span class="n">1</span><span>El pueblo está involucrado</span></li><li><span class="n">2</span><span>Una bruja rival le tendió una trampa</span></li><li><span class="n">3</span><span>El cazador no lo hizo</span></li><li><span class="n">4</span><span>El cazador te está esperando</span></li><li><span class="n">5</span><span>El pueblo celebra un festival</span></li><li><span class="n">6</span><span>El cazador murió y lo están enterrando</span></li><li><span class="n">7</span><span>Hay dos cazadores (rivales) en la ciudad</span></li><li><span class="n">8</span><span>El pueblo está abandonado</span></li><li><span class="n">9</span><span>El cazador atrapó a un sospechoso y lo está interrogando</span></li><li><span class="n">10</span><span>El pueblo lo odia</span></li></ol>
-  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="card"><div class="frame tb-simple tbl">
-  <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
-<circle cx="50" cy="50" r="8" fill="#ffffff"/>
-<path d="M84 12 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3 z M16 70 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2 z" fill="#2f2340"/></svg><div><div class="ht">Tu bruja te enseñó…</div><div class="hs">Un hechizo · usar magia siempre es peligroso</div></div><div class="d10">d10</div></div>
-  <ol class="grid"><li><span class="n">1</span><span>Mano invisible</span></li><li><span class="n">2</span><span>Conjurar luz</span></li><li><span class="n">3</span><span>Hablar humano</span></li><li><span class="n">4</span><span>Bloquear / desbloquear, abrir / cerrar</span></li><li><span class="n">5</span><span>Conjurar comida</span></li><li><span class="n">6</span><span>Crear fuego</span></li><li><span class="n">7</span><span>Ordenar, limpiar y reparar</span></li><li><span class="n">8</span><span>Hacer crecer una planta</span></li><li><span class="n">9</span><span>Distraer / confundir</span></li><li><span class="n">10</span><span>Hacer que un libro se lea en voz alta solo</span></li></ol>
-  <div class="foot">La bruja está muerta · un RPG acerca de la muerte</div></div></div><div class="credit">Tiradas de historia · recorta por la línea discontinua</div></section><section class="page media"><div class="card"><div class="frame tb-resultado tbl">
+  <div class="danger"><div class="dtop"><span class="lbl">Peligro</span><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="dnote">Si tu tirada es <b>igual o menor</b> que tu peligro: grave desgracia, atrapado… o muerte.</div></div></div></div><div class="credit">Personajes 2/2 · recorta por la línea discontinua</div></section><section class="page quinta"><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -447,7 +449,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">Bajo el yugo de un barón</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">Bajo el yugo de un barón</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -458,7 +460,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Lleno de alegres gnomos</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Lleno de alegres gnomos</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -469,7 +471,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">Controlado por un siniestro culto</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">Controlado por un siniestro culto</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -480,7 +482,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">Devotamente religioso</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">Devotamente religioso</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -491,7 +493,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">Increíblemente supersticioso</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">Increíblemente supersticioso</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -502,7 +504,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">En guerra con las tribus del bosque</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">En guerra con las tribus del bosque</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -513,7 +515,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt largo">Construido alrededor de una academia de magos</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt largo">Construido alrededor de una academia de magos</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -524,7 +526,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">Lleno de mineros</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">Lleno de mineros</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -535,7 +537,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt">Sombrío y peligroso</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt">Sombrío y peligroso</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 90 L10 52 L28 36 L46 52 L46 90 Z" fill="#2f2340"/>
 <path d="M40 90 L40 44 L64 20 L88 44 L88 90 Z" fill="#2f2340"/>
@@ -546,7 +548,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt">Ofensivamente perfecto</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt">Ofensivamente perfecto</div></div></div></div><div class="credit">El pueblo es… · recorta por la línea discontinua</div></section><section class="page quinta"><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -558,7 +560,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">Fuerte y armado</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">Fuerte y armado</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -570,7 +572,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Viejo y sabio</div></div></div></div><div class="credit">Resultados 1/4 · recorta por la línea discontinua</div></section><section class="page media"><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Viejo y sabio</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -582,7 +584,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">Borracho y violento</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">Borracho y violento</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -594,7 +596,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">Piadoso y agresivo</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">Piadoso y agresivo</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -606,7 +608,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">Oculto y cobarde</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">Oculto y cobarde</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -618,7 +620,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">Mágico y celoso</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">Mágico y celoso</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -630,7 +632,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt">Inteligente y cruel</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt">Inteligente y cruel</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -642,7 +644,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">Clonado y oculto</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">Clonado y oculto</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -654,7 +656,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt">Alegre y bienintencionado</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt">Alegre y bienintencionado</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="#2f2340"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="#2f2340"/>
@@ -666,7 +668,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt">Testarudo y salvaje</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt">Testarudo y salvaje</div></div></div></div><div class="credit">El cazador es… · recorta por la línea discontinua</div></section><section class="page quinta"><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -676,7 +678,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">El pueblo está involucrado</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">El pueblo está involucrado</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -686,7 +688,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Una bruja rival le tendió una trampa</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Una bruja rival le tendió una trampa</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -696,7 +698,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">El cazador no lo hizo</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">El cazador no lo hizo</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -706,7 +708,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">El cazador te está esperando</div></div></div></div><div class="credit">Resultados 2/4 · recorta por la línea discontinua</div></section><section class="page media"><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">El cazador te está esperando</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -716,7 +718,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">El pueblo celebra un festival</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">El pueblo celebra un festival</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -726,7 +728,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">El cazador murió y lo están enterrando</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">El cazador murió y lo están enterrando</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -736,7 +738,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt">Hay dos cazadores (rivales) en la ciudad</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt">Hay dos cazadores (rivales) en la ciudad</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -746,7 +748,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">El pueblo está abandonado</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">El pueblo está abandonado</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -756,7 +758,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt largo">El cazador atrapó a un sospechoso y lo está interrogando</div></div></div></div><div class="card"><div class="frame tb-resultado tbl secret">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt largo">El cazador atrapó a un sospechoso y lo está interrogando</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl secret">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 50 Q50 6 94 50 Q50 94 6 50 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="18" fill="#ffffff"/><circle cx="50" cy="50" r="9" fill="#2f2340"/>
@@ -766,7 +768,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt">El pueblo lo odia</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt">El pueblo lo odia</div></div></div></div><div class="credit">El giro · recorta por la línea discontinua</div></section><section class="page quinta"><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -775,7 +777,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">Mano invisible</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">1</text></svg><div class="txt">Mano invisible</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -784,7 +786,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Conjurar luz</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">2</text></svg><div class="txt">Conjurar luz</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -793,7 +795,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">Hablar humano</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">3</text></svg><div class="txt">Hablar humano</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -802,7 +804,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">Bloquear / desbloquear, abrir / cerrar</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">4</text></svg><div class="txt">Bloquear / desbloquear, abrir / cerrar</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -811,7 +813,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">Conjurar comida</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">5</text></svg><div class="txt">Conjurar comida</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -820,7 +822,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">Crear fuego</div></div></div></div><div class="credit">Resultados 3/4 · recorta por la línea discontinua</div></section><section class="page media"><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">6</text></svg><div class="txt">Crear fuego</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -829,7 +831,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt">Ordenar, limpiar y reparar</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">7</text></svg><div class="txt">Ordenar, limpiar y reparar</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -838,7 +840,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">Hacer crecer una planta</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">8</text></svg><div class="txt">Hacer crecer una planta</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -847,7 +849,7 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt">Distraer / confundir</div></div></div></div><div class="card"><div class="frame tb-resultado tbl">
+<text x="50" y="59" text-anchor="middle" font-size="36" font-family="Lora" font-weight="700" fill="#ffffff">9</text></svg><div class="txt">Distraer / confundir</div></div></div></div><div class="card"><div class="frame tb-resultado-5x2 tbl">
   <div class="head"><svg class="hico" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 <path d="M50 6 L58 38 L90 44 L62 58 L70 92 L50 70 L30 92 L38 58 L10 44 L42 38 Z" fill="#2f2340"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -856,4 +858,4 @@ html, body { background: #fff; color: #2f2340; font-family: "Caladea", "Liberati
 <path d="M50 3 L95 38 L95 62 L50 97 L5 62 L5 38 Z" fill="#6b3f8f"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z" fill="#2f2340" opacity=".35"/>
 <path d="M50 3 L80 56 L50 74 L20 56 Z M80 56 L95 62 M20 56 L5 62 M50 74 L50 97" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
-<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt largo">Hacer que un libro se lea en voz alta solo</div></div></div></div><div class="credit">Resultados 4/4 · recorta por la línea discontinua</div></section></body></html>
+<text x="50" y="59" text-anchor="middle" font-size="30" font-family="Lora" font-weight="700" fill="#ffffff">10</text></svg><div class="txt largo">Hacer que un libro se lea en voz alta solo</div></div></div></div><div class="credit">Tu bruja te enseñó… · recorta por la línea discontinua</div></section></body></html>

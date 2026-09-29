@@ -1,11 +1,11 @@
-"""Documento A4: coloca tarjetas en rejillas de 2x3 (o 2x6 si son de media altura) y lo exporta a HTML o PDF."""
+"""Documento A4: coloca tarjetas en rejillas de 2x3, 2x6 (media) o 2x5 (quinta) y lo exporta a HTML o PDF."""
 from pathlib import Path
 
 from .estilo import CSS_BASE
 from .tarjetas import Tarjeta
 from .tipografia import css_incrustado
 
-POR_PAGINA = {"completa": 6, "media": 12}  # tarjetas por hoja según su formato
+POR_PAGINA = {"completa": 6, "media": 12, "quinta": 10}  # tarjetas por hoja según su formato
 
 
 class Documento:
