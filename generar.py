@@ -10,6 +10,7 @@
                                       en vez de 2x5
     python generar.py --sin-resultados -> sin las tarjetas por resultado
     python generar.py --catalogo   -> catalogo.pdf con todos los diseños de cada modelo
+    python generar.py --publicacion [DIR] -> los PDF de EDICIONES en DIR (por defecto, dist/)
 """
 import sys
 from pathlib import Path
@@ -45,6 +46,41 @@ def mazo(media=False, copias=1, resultados="por_resultado_5x2"):
     return doc
 
 
+def _tiradas_de_historia(doc):
+    """Primera hoja: descripción del juego, reglas y las cuatro tablas d10 completas."""
+    tb = Tarjetas.Tablas
+    doc.seccion("Tiradas de historia")
+    doc.add(Tarjetas.Historia.Introduccion.simple(), Tarjetas.Reglas.ComoJugar.con_peligro_mortal())
+    doc.add(t.simple() for t in (tb.Pueblo, tb.Cazador, tb.Giro, tb.Hechizo))
+    return doc
+
+
+def edicion_fichas_con_tiradas():
+    """Tiradas de historia y fichas con líneas para apuntar pueblo, cazador y hechizo."""
+    pj = Tarjetas.Personajes
+    doc = _tiradas_de_historia(Documento()).seccion("Personajes")
+    doc.add(p.con_tiradas_de_inicio() for p in pj.todos())
+    doc.add(pj.EnBlanco.con_tiradas_de_inicio(), pj.EnBlanco.con_tiradas_de_inicio())
+    return doc
+
+
+def edicion_tarjetas_de_resultados():
+    """Tiradas de historia, fichas sencillas sin campos que rellenar y una hoja 2x5 por tabla."""
+    tb = Tarjetas.Tablas
+    doc = _tiradas_de_historia(Documento()).seccion("Personajes")
+    doc.add(p.simple() for p in Tarjetas.Personajes.todos())
+    for t in (tb.Pueblo, tb.Cazador, tb.Giro, tb.Hechizo):
+        doc.seccion(t.titulo).add(t.por_resultado_5x2())
+    return doc
+
+
+# Los PDF que se publican en cada versión (GitHub Releases): nombre de fichero -> generador
+EDICIONES = {
+    "la-bruja-esta-muerta-fichas-con-tiradas.pdf": edicion_fichas_con_tiradas,
+    "la-bruja-esta-muerta-tarjetas-de-resultados.pdf": edicion_tarjetas_de_resultados,
+}
+
+
 def catalogo():
     """Una muestra de cada diseño disponible, para compararlos."""
     doc = Documento("La bruja está muerta · Catálogo de diseños")
@@ -62,7 +98,13 @@ def catalogo():
 
 
 if __name__ == "__main__":
-    if "--catalogo" in sys.argv:
+    if "--publicacion" in sys.argv:
+        i = sys.argv.index("--publicacion") + 1
+        destino = Path(sys.argv[i]) if i < len(sys.argv) and not sys.argv[i].startswith("--") else AQUI / "dist"
+        destino.mkdir(parents=True, exist_ok=True)
+        for nombre, generador in EDICIONES.items():
+            generador().render(destino / nombre)
+    elif "--catalogo" in sys.argv:
         catalogo().render(AQUI / "catalogo.pdf")
     else:
         copias = int(sys.argv[sys.argv.index("--copias") + 1]) if "--copias" in sys.argv else 1
