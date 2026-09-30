@@ -59,6 +59,7 @@ Genera `tarjetas.html` y `tarjetas.pdf`, con 7 hojas A4:
 | `--media` | Las cuatro tablas de la hoja 1 a media altura (tabla completa en 99×47,5 mm) |
 | `--copias N` | Repite las cuatro tablas N veces; por ejemplo, `--media --copias 3` llena una hoja de 12 |
 | `--catalogo` | Genera `catalogo.pdf` con una muestra de **todos** los diseños disponibles, para compararlos |
+| `--publicacion [DIR]` | Genera en `DIR` (por defecto `dist/`) los PDF que se publican en cada versión (ver [Publicación en releases](#publicación-en-releases)) |
 
 Ejemplos:
 
@@ -67,6 +68,21 @@ Ejemplos:
 .venv/bin/python generar.py --media --copias 3       # una hoja de tablas por jugador
 .venv/bin/python generar.py --catalogo               # comparar todos los diseños
 ```
+
+### Publicación en releases
+
+El workflow [`.github/workflows/publicar-pdf.yml`](.github/workflows/publicar-pdf.yml) genera con `generar.py --publicacion` los PDF del diccionario `EDICIONES` de `generar.py`:
+
+| PDF | Contenido |
+|---|---|
+| `la-bruja-esta-muerta-fichas-con-tiradas.pdf` | Hoja 1 con la descripción del juego, las reglas y las cuatro tablas d10; personajes `con_tiradas_de_inicio()` (con líneas para apuntar pueblo, cazador y hechizo) y 2 fichas en blanco |
+| `la-bruja-esta-muerta-tarjetas-de-resultados.pdf` | La misma hoja 1; personajes `simple()`, sin campos para rellenar, y una hoja 2×5 por tabla con una tarjeta por resultado |
+
+- En cada petición de fusión y en `master`, los PDF quedan como artefacto `pdf` de la ejecución, para revisarlos.
+- Al subir una etiqueta `v*` (`git tag v1.0 && git push origin v1.0`), se adjuntan a la release de esa etiqueta, que se crea si no existe.
+- También puede lanzarse a mano desde la pestaña *Actions* ("Run workflow"), indicando la etiqueta de la release. Si la etiqueta ya existe, los PDF se generan desde su commit; si no, se crea en el commit de la rama elegida.
+
+Para publicar otro PDF, añade al diccionario `EDICIONES` su nombre de fichero y la función que construye su `Documento`.
 
 ### Consejos de impresión
 
@@ -207,7 +223,8 @@ doc.render("buho.pdf")
 ```
 .
 ├── LICENSE               # Texto legal de CC BY-SA 4.0
-├── generar.py            # Script principal: mazo por defecto, opciones de línea de órdenes y catálogo
+├── generar.py            # Script principal: mazo por defecto, ediciones publicadas, opciones de línea de órdenes y catálogo
+├── .github/workflows/    # publicar-pdf.yml: genera los PDF y los adjunta a las releases
 ├── bruja/                # Paquete con toda la lógica
 │   ├── __init__.py       # Exporta Documento, Tarjetas, Tarjeta, Modelo y diseno
 │   ├── documento.py      # Documento: paginación por formato y secciones, exportación a HTML y PDF
