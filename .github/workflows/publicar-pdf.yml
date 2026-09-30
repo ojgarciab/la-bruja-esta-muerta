@@ -1,11 +1,11 @@
 name: Publicar PDF
 
 # Genera los PDF de EDICIONES (generar.py --publicacion):
-# - en cada petición de fusión y en main, como artefacto descargable para revisarlos;
+# - en cada petición de fusión y en master, como artefacto descargable para revisarlos;
 # - al subir una etiqueta v* (o a mano, indicando la etiqueta), los adjunta a su release.
 on:
   push:
-    branches: [main]
+    branches: [master]
     tags: ["v*"]
   pull_request:
   workflow_dispatch:

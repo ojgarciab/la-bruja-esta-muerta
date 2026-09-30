@@ -78,7 +78,7 @@ El workflow [`.github/workflows/publicar-pdf.yml`](.github/workflows/publicar-pd
 | `la-bruja-esta-muerta-fichas-con-tiradas.pdf` | Hoja 1 con la descripción del juego, las reglas y las cuatro tablas d10; personajes `con_tiradas_de_inicio()` (con líneas para apuntar pueblo, cazador y hechizo) y 2 fichas en blanco |
 | `la-bruja-esta-muerta-tarjetas-de-resultados.pdf` | La misma hoja 1; personajes `simple()`, sin campos para rellenar, y una hoja 2×5 por tabla con una tarjeta por resultado |
 
-- En cada petición de fusión y en `main`, los PDF quedan como artefacto `pdf` de la ejecución, para revisarlos.
+- En cada petición de fusión y en `master`, los PDF quedan como artefacto `pdf` de la ejecución, para revisarlos.
 - Al subir una etiqueta `v*` (`git tag v1.0 && git push origin v1.0`), se adjuntan a la release de esa etiqueta, que se crea si no existe.
 - También puede lanzarse a mano desde la pestaña *Actions* ("Run workflow"), indicando la etiqueta de la release.
 
