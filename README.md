@@ -22,7 +22,7 @@ Las fuentes (Lora y Caladea, con licencia OFL) están incluidas en `bruja/fuente
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install playwright
+.venv/bin/pip install -r requirements.txt
 ```
 
 Si no tienes Google Chrome, instala el Chromium de Playwright:
@@ -223,6 +223,7 @@ doc.render("buho.pdf")
 ```
 .
 ├── LICENSE               # Texto legal de CC BY-SA 4.0
+├── requirements.txt      # Dependencias (Playwright), también clave de la caché de pip en Actions
 ├── generar.py            # Script principal: mazo por defecto, ediciones publicadas, opciones de línea de órdenes y catálogo
 ├── .github/workflows/    # publicar-pdf.yml: genera los PDF y los adjunta a las releases
 ├── bruja/                # Paquete con toda la lógica
