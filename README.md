@@ -1,10 +1,12 @@
 # La bruja está muerta · Tarjetas imprimibles
 
+[![Licencia: CC BY-SA 4.0](https://img.shields.io/badge/Licencia-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/deed.es)
+
 Generador en Python de tarjetas A4 recortables para *La bruja está muerta*, la versión en castellano de *The Witch is Dead*, el rol de una página de Grant Howitt. Produce un PDF listo para imprimir con:
 
-- la descripción del juego, las reglas y las tablas d10 de la historia,
-- una ficha por cada especie de animalito del bosque, más fichas en blanco,
-- una tarjeta por cada resultado de las tablas, para repartirlas o sacarlas al azar.
+- La descripción del juego, las reglas y las tablas d10 de la historia.
+- Una ficha por cada especie de animalito del bosque, más fichas en blanco.
+- Una tarjeta por cada resultado de las tablas, para repartirlas o sacarlas al azar.
 
 Cada tarjeta tiene varios **diseños** seleccionables, así que puedes probar diseños nuevos sin perder los anteriores.
 
@@ -204,6 +206,7 @@ doc.render("buho.pdf")
 
 ```
 .
+├── LICENSE               # Texto legal de CC BY-SA 4.0
 ├── generar.py            # Script principal: mazo por defecto, opciones de línea de órdenes y catálogo
 ├── bruja/                # Paquete con toda la lógica
 │   ├── __init__.py       # Exporta Documento, Tarjetas, Tarjeta, Modelo y diseno
@@ -213,7 +216,7 @@ doc.render("buho.pdf")
 │   ├── iconos.py         # Ilustraciones SVG propias (animales e iconos de las tablas)
 │   ├── datos.py          # Datos del juego: especies, rasgos y tablas d10
 │   ├── tipografia.py     # Incrusta las fuentes en el HTML (y las descarga si faltan)
-│   └── fuentes/          # Lora y Caladea (woff2, subconjuntos latin y latin-ext) + fuentes.css
+│   └── fuentes/          # Lora y Caladea (woff2, latin y latin-ext), fuentes.css y sus licencias OFL
 ├── tarjetas.html / .pdf  # Resultado del mazo por defecto
 └── catalogo.pdf          # Resultado de --catalogo
 ```
@@ -254,6 +257,39 @@ Los diseños de las fichas de personaje salen del historial de git:
 
 Se reprodujeron con las clases actuales y se compararon píxel a píxel con los PDF de cada commit: son idénticos.
 
-## Créditos
+## Licencia
 
-*The Witch is Dead* es un juego de Grant Howitt. Este proyecto solo maqueta tarjetas de ayuda para jugarlo en castellano. Las ilustraciones SVG son propias. Las fuentes Lora y Caladea se distribuyen bajo la SIL Open Font License.
+© 2026 Óscar García. Este trabajo de diseño se distribuye bajo la licencia **[Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es)**. El texto legal completo está en [`LICENSE`](LICENSE).
+
+La licencia cubre el trabajo propio de este proyecto:
+
+- El código Python (`generar.py` y el paquete `bruja/`).
+- La maquetación y el diseño de las tarjetas (estilos, composición y formatos).
+- Las ilustraciones SVG de `bruja/iconos.py`.
+- Los PDF y HTML generados, **en lo que respecta a esos elementos**.
+
+Puedes copiar, redistribuir, adaptar y usar este material para cualquier fin, incluso comercial, siempre que:
+
+- **Atribución:** cites la autoría, enlaces a la licencia e indiques si has hecho cambios.
+- **CompartirIgual:** si remezclas, transformas o creas a partir de él, distribuyas tu contribución bajo la misma licencia.
+
+## Licencias de los trabajos relacionados
+
+La licencia CC BY-SA 4.0 de este proyecto **no se aplica** a los siguientes trabajos, que conservan sus propias condiciones:
+
+| Trabajo | Autoría | Condiciones |
+|---|---|---|
+| *[The Witch is Dead](https://gshowitt.itch.io/the-witch-is-dead)*: reglas, historia, tablas d10, especies y rasgos | Grant Howitt | Descarga gratuita ("paga lo que quieras") en itch.io. La página no indica ninguna licencia explícita, así que sus derechos pertenecen a su autor. |
+| Traducción al castellano *La bruja está muerta*, en la que se basan los textos de las tarjetas | Traducción no acreditada en el documento de origen | Sujeta a los derechos del juego original |
+| Fuentes [Lora](https://fonts.google.com/specimen/Lora) y [Caladea](https://fonts.google.com/specimen/Caladea), en `bruja/fuentes/` | © 2011 The Lora Project Authors (Cyreal); © 2012 The Caladea Project Authors (Huerta Tipográfica) | [SIL Open Font License 1.1](https://openfontlicense.org): textos completos en [`OFL-Lora.txt`](bruja/fuentes/OFL-Lora.txt) y [`OFL-Caladea.txt`](bruja/fuentes/OFL-Caladea.txt) |
+| [Playwright](https://playwright.dev/python/), dependencia para generar el PDF (no se redistribuye) | Microsoft | [Apache 2.0](https://github.com/microsoft/playwright-python/blob/main/LICENSE) |
+
+Por tanto, los textos del juego que aparecen en las tarjetas (historia, reglas, resultados de las tablas y estadísticas de las especies) son obra de Grant Howitt y se reproducen como material de ayuda para jugar. Si quieres **publicar o vender** tarjetas generadas con este proyecto, además de cumplir la CC BY-SA 4.0 deberás contar con el permiso del autor del juego para su contenido.
+
+## Agradecimientos
+
+Muchas gracias a **Grant Howitt** por *The Witch is Dead*. Con una sola página consiguió un juego lleno de humor, ternura y venganza, que se explica en un minuto y se recuerda durante años, y lo compartió generosamente con quien quisiera jugarlo. Su trabajo es la inspiración de este proyecto: estas tarjetas solo pretenden ser un homenaje y una ayuda para llevar su juego a la mesa en castellano.
+
+Si te gusta el juego, visita su página en [itch.io](https://gshowitt.itch.io/the-witch-is-dead) y apoya su trabajo.
+
+Gracias también a quien tradujo el juego al castellano, y a los autores de las fuentes Lora y Caladea por publicarlas bajo una licencia libre.
