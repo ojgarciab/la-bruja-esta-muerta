@@ -1,4 +1,4 @@
-"""Tarjetas imprimibles A4 para 'La bruja está muerta'.
+"""Tarjetas imprimibles A4 para 'El medallón de la bruja'.
 
     from bruja import Documento, Tarjetas
 

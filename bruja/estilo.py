@@ -6,7 +6,7 @@ TINT = "#efe8f4"
 W = "#ffffff"
 
 
-FOOT = '<div class="foot">La bruja está muerta · un RPG acerca de la muerte</div>'
+FOOT = '<div class="foot">El medallón de la bruja · un juego de rol para animalitos valientes</div>'
 
 CSS_BASE = f'''
 @page {{ size: A4; margin: 0; }}

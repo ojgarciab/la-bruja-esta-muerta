@@ -1,8 +1,8 @@
-# La bruja está muerta · Tarjetas imprimibles
+# El medallón de la bruja · Tarjetas imprimibles
 
 [![Licencia: CC BY-SA 4.0](https://img.shields.io/badge/Licencia-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/deed.es)
 
-Generador en Python de tarjetas A4 recortables para *La bruja está muerta*, la versión en castellano de *The Witch is Dead*, el rol de una página de Grant Howitt. Produce un PDF listo para imprimir con:
+Generador en Python de tarjetas A4 recortables para *El medallón de la bruja*, una **versión infantil** (a partir de 7 años) de *La bruja está muerta*, la versión en castellano de *The Witch is Dead*, el rol de una página de Grant Howitt. En esta versión nadie muere: un ladrón ha robado el medallón mágico de la bruja, que ha caído en un sueño encantado, y los animalitos del bosque deben recuperarlo antes de la próxima luna llena (ver [Versión infantil](#versión-infantil)). Produce un PDF listo para imprimir con:
 
 - La descripción del juego, las reglas y las tablas d10 de la historia.
 - Una ficha por cada especie de animalito del bosque, más fichas en blanco.
@@ -41,10 +41,10 @@ Genera `tarjetas.html` y `tarjetas.pdf`, con 7 hojas A4:
 
 | Hoja | Contenido | Rejilla |
 |---|---|---|
-| 1 | Tiradas de historia: introducción, cómo jugar, y las tablas del pueblo, el cazador, el giro y el hechizo | 2×3 |
+| 1 | Tiradas de historia: introducción, cómo jugar, y las tablas del pueblo, el ladrón, el giro y el hechizo | 2×3 |
 | 2–3 | Personajes: las 10 especies y 2 fichas en blanco | 2×3 |
 | 4 | El pueblo es…: una tarjeta por resultado | 2×5 |
-| 5 | El cazador es…: una tarjeta por resultado | 2×5 |
+| 5 | El ladrón es…: una tarjeta por resultado | 2×5 |
 | 6 | El giro: una tarjeta por resultado | 2×5 |
 | 7 | Tu bruja te enseñó…: una tarjeta por resultado | 2×5 |
 
@@ -75,13 +75,13 @@ El workflow [`.github/workflows/publicar-pdf.yml`](.github/workflows/publicar-pd
 
 | PDF | Contenido |
 |---|---|
-| `la-bruja-esta-muerta-tarjetas-de-personajes-para-rellenar.pdf` | Hoja 1 con la descripción del juego, las reglas y las cuatro tablas d10; personajes `con_tiradas_de_inicio()` (con líneas para apuntar pueblo, cazador y hechizo) y 2 fichas en blanco |
-| `la-bruja-esta-muerta-tarjetas-de-personajes-reutilizables.pdf` | La misma hoja 1; personajes `simple()`, sin campos para rellenar, y 2 fichas en blanco con ese mismo diseño; después, una hoja 2×5 por tabla con una tarjeta por resultado |
+| `el-medallon-de-la-bruja-tarjetas-de-personajes-para-rellenar.pdf` | Hoja 1 con la descripción del juego, las reglas y las cuatro tablas d10; personajes `con_tiradas_de_inicio()` (con líneas para apuntar pueblo, ladrón y hechizo) y 2 fichas en blanco |
+| `el-medallon-de-la-bruja-tarjetas-de-personajes-reutilizables.pdf` | La misma hoja 1; personajes `simple()`, sin campos para rellenar, y 2 fichas en blanco con ese mismo diseño; después, una hoja 2×5 por tabla con una tarjeta por resultado |
 
 #### ¿Qué PDF elegir?
 
-- **Personajes reutilizables:** las fichas no tienen nada que escribir en cada partida. La tirada inicial (el pueblo, el cazador y el hechizo que te enseñó la bruja) se resuelve con las tarjetas de resultados: se coloca junto a la ficha la tarjeta que ha salido y, al terminar, se devuelve a su montón. Así, la misma ficha sirve para partida tras partida. Las 2 fichas en blanco permiten crear dos personajes propios una sola vez y reutilizarlos igual.
-- **Personajes para rellenar:** cada ficha tiene líneas para apuntar el pueblo, el cazador y el hechizo. Aunque se puede escribir con lápiz y borrar, con el uso el papel se estropea, así que suelen servir para **una o dos partidas**. Es la opción cómoda si vas a jugar una vez o no quieres recortar las 40 tarjetas de resultados.
+- **Personajes reutilizables:** las fichas no tienen nada que escribir en cada partida. La tirada inicial (el pueblo, el ladrón y el hechizo que te enseñó la bruja) se resuelve con las tarjetas de resultados: se coloca junto a la ficha la tarjeta que ha salido y, al terminar, se devuelve a su montón. Así, la misma ficha sirve para partida tras partida. Las 2 fichas en blanco permiten crear dos personajes propios una sola vez y reutilizarlos igual.
+- **Personajes para rellenar:** cada ficha tiene líneas para apuntar el pueblo, el ladrón y el hechizo. Aunque se puede escribir con lápiz y borrar, con el uso el papel se estropea, así que suelen servir para **una o dos partidas**. Es la opción cómoda si vas a jugar una vez o no quieres recortar las 40 tarjetas de resultados.
 
 **Para marcar el peligro, en las dos versiones**, es mejor no pintar los círculos con lápiz y borrarlos después: pon encima **fichas, cuentas, monedas o piedrecitas**. Puedes colocar una en el círculo del nivel actual, o tantas como puntos de peligro tengas. Así las fichas duran mucho más.
 
@@ -149,9 +149,9 @@ Especies, en orden de d10: `Zorro`, `Gato`, `Sapo`, `Arana`, `Buho`, `Liebre`, `
 
 | Diseño | Formato | Descripción |
 |---|---|---|
-| `con_notas()` | completa | Diseño original: retrato, especie, líneas para nombre y hechizo, rasgos, peligro y notas del plan de venganza |
+| `con_notas()` | completa | Diseño original: retrato, especie, líneas para nombre y hechizo, rasgos, peligro y notas del plan de rescate |
 | `simple()` | completa | Retrato y rasgos grandes, y un recuadro de peligro con la regla de desgracia |
-| `con_tiradas_de_inicio()` | completa | Rasgos junto al retrato, número del d10 en la esquina, y líneas para apuntar pueblo, cazador y hechizo. **Es el que usa el mazo por defecto.** |
+| `con_tiradas_de_inicio()` | completa | Rasgos junto al retrato, número del d10 en la esquina, y líneas para apuntar pueblo, ladrón y hechizo. **Es el que usa el mazo por defecto.** |
 
 ### Historia: `Tarjetas.Historia.Introduccion`
 
@@ -164,11 +164,11 @@ Especies, en orden de d10: `Zorro`, `Gato`, `Sapo`, `Arana`, `Buho`, `Liebre`, `
 | Diseño | Formato | Descripción |
 |---|---|---|
 | `simple()` | completa | Reglas originales: tirada, dificultades y peligro |
-| `con_peligro_mortal()` | completa | Añade que sacar igual o menos que tu peligro trae desgracia, captura o muerte. **Por defecto.** |
+| `con_lios()` | completa | Añade que sacar igual o menos que tu peligro te mete en un lío: te atrapan, te pierdes o vuelves a casa a descansar. **Por defecto.** |
 
 ### Tablas d10: `Tarjetas.Tablas.<Tabla>`
 
-Tablas: `Pueblo`, `Cazador`, `Giro` (solo para el GM, con números morados y línea discontinua) y `Hechizo`.
+Tablas: `Pueblo`, `Ladron`, `Giro` (solo para el GM, con números morados y línea discontinua) y `Hechizo`.
 
 | Diseño | Formato | Devuelve | Descripción |
 |---|---|---|---|
@@ -202,7 +202,7 @@ doc.render("personajes.pdf")
 ```python
 tb = Tarjetas.Tablas
 doc = Documento()
-for t in (tb.Pueblo, tb.Cazador, tb.Giro, tb.Hechizo):
+for t in (tb.Pueblo, tb.Ladron, tb.Giro, tb.Hechizo):
     doc.seccion(t.titulo).add(t.por_resultado_5x2())
 doc.render("resultados.pdf")
 ```
@@ -277,10 +277,48 @@ Los diseños de las fichas de personaje salen del historial de git:
 | Commit | Diseño |
 |---|---|
 | `d22bb11` | `con_notas()` y `ComoJugar.simple()` |
-| `fb165c5` | `simple()` y `ComoJugar.con_peligro_mortal()` |
+| `fb165c5` | `simple()` y `ComoJugar.con_peligro_mortal()` (hoy `con_lios()`) |
 | `fc46144` | `con_tiradas_de_inicio()`, versión con el dado recolocado y las líneas más espaciadas |
 
-Se reprodujeron con las clases actuales y se compararon píxel a píxel con los PDF de cada commit: son idénticos.
+Se reprodujeron con las clases de la rama `master` y se compararon píxel a píxel con los PDF de cada commit: son idénticos. En esta versión infantil los diseños son los mismos, pero cambian los textos.
+
+## Versión infantil
+
+Esta rama adapta la historia y los textos para jugar con niños a partir de 7 años. Las mecánicas (tiradas, dificultades, peligro y magia) no cambian.
+
+| Original | Versión infantil |
+|---|---|
+| *La bruja está muerta* · "Un RPG acerca de la muerte" | *El medallón de la bruja* · "Un juego de rol para animalitos valientes" |
+| Un cazador de brujas asesina a la bruja | Un ladrón le roba su medallón mágico y ella cae en un sueño encantado |
+| Vengarse, matar al cazador y llevar sus ojos al cuerpo en una semana | Recuperar el medallón y ponérselo al cuello antes de la próxima luna llena |
+| Tabla "El cazador es…" (`Tablas.Cazador`) | Tabla "El ladrón es…" (`Tablas.Ladron`) |
+| Peligro: "grave desgracia, atrapado… o muerte" (`con_peligro_mortal()`) | Peligro: "te atrapan, te pierdes… ¡o vuelves a casa a descansar!" (`con_lios()`) |
+| Rasgo Fiereza (FIE): "…morder" | Rasgo Fuerza (FUE): "…cargar" |
+| Astucia: "escabullirse, robar, esconderse" | Astucia: "escabullirse, esconderse, despistar" |
+| Notas · Plan de venganza | Notas · Plan de rescate |
+
+Cambios en las tablas d10:
+
+| Tabla | Nº | Original | Versión infantil |
+|---|---|---|---|
+| Pueblo | 1 | Bajo el yugo de un barón | Gobernado por un barón gruñón |
+| Pueblo | 3 | Controlado por un siniestro culto | Controlado por un club secreto |
+| Pueblo | 4 | Devotamente religioso | Obsesionado con las normas |
+| Pueblo | 6 | En guerra con las tribus del bosque | Enfadado con los animales del bosque |
+| Pueblo | 9 | Sombrío y peligroso | Oscuro y lleno de niebla |
+| Pueblo | 10 | Ofensivamente perfecto | Tan perfecto que resulta sospechoso |
+| Ladrón | 1 | Fuerte y armado | Grandullón y forzudo |
+| Ladrón | 3 | Borracho y violento | Torpe y gruñón |
+| Ladrón | 4 | Piadoso y agresivo | Educado y tramposo |
+| Ladrón | 5 | Oculto y cobarde | Escondido y miedica |
+| Ladrón | 7 | Inteligente y cruel | Listísimo y presumido |
+| Ladrón | 8 | Clonado y oculto | Disfrazado y escurridizo |
+| Ladrón | 10 | Testarudo y salvaje | Testarudo y alborotador |
+| Giro | 3, 4, 7 | El cazador… | El ladrón… |
+| Giro | 6 | El cazador murió y lo están enterrando | Al ladrón se le ha perdido el medallón |
+| Giro | 9 | El cazador atrapó a un sospechoso y lo está interrogando | El alguacil acusa del robo a un inocente |
+| Giro | 10 | El pueblo lo odia | Todo el pueblo lo adora |
+| Hechizo | 6 | Crear fuego | Hacer burbujas de colores |
 
 ## Licencia
 

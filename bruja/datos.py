@@ -1,6 +1,6 @@
 """Datos del juego: especies, rasgos y tablas d10."""
 
-ESPECIES = [  # (d10, nombre, icono, In, Fi, As, Ra)
+ESPECIES = [  # (d10, nombre, icono, In, Fu, As, Ra)
     (1, "Zorro", "zorro", 2, 2, 1, 1),
     (2, "Gato", "gato", 0, 2, 3, 2),
     (3, "Sapo", "sapo", 1, 0, 2, 1),
@@ -14,21 +14,21 @@ ESPECIES = [  # (d10, nombre, icono, In, Fi, As, Ra)
 ]
 RASGOS = [
     ("INT", "Inteligencia", "hablar con humanos, entenderlos"),
-    ("FIE", "Fiereza", "asustar, arrastrar, empujar, morder"),
-    ("AST", "Astucia", "escabullirse, robar, esconderse"),
+    ("FUE", "Fuerza", "asustar, arrastrar, empujar, cargar"),
+    ("AST", "Astucia", "escabullirse, esconderse, despistar"),
     ("RAP", "Rapidez", "superar, escalar, evadir"),
 ]
-PUEBLO = ["Bajo el yugo de un barón", "Lleno de alegres gnomos", "Controlado por un siniestro culto",
-          "Devotamente religioso", "Increíblemente supersticioso", "En guerra con las tribus del bosque",
-          "Construido alrededor de una academia de magos", "Lleno de mineros", "Sombrío y peligroso",
-          "Ofensivamente perfecto"]
-CAZADOR = ["Fuerte y armado", "Viejo y sabio", "Borracho y violento", "Piadoso y agresivo",
-           "Oculto y cobarde", "Mágico y celoso", "Inteligente y cruel", "Clonado y oculto",
-           "Alegre y bienintencionado", "Testarudo y salvaje"]
-GIRO = ["El pueblo está involucrado", "Una bruja rival le tendió una trampa", "El cazador no lo hizo",
-        "El cazador te está esperando", "El pueblo celebra un festival", "El cazador murió y lo están enterrando",
-        "Hay dos cazadores (rivales) en la ciudad", "El pueblo está abandonado",
-        "El cazador atrapó a un sospechoso y lo está interrogando", "El pueblo lo odia"]
+PUEBLO = ["Gobernado por un barón gruñón", "Lleno de alegres gnomos", "Controlado por un club secreto",
+          "Obsesionado con las normas", "Increíblemente supersticioso", "Enfadado con los animales del bosque",
+          "Construido alrededor de una academia de magos", "Lleno de mineros", "Oscuro y lleno de niebla",
+          "Tan perfecto que resulta sospechoso"]
+LADRON = ["Grandullón y forzudo", "Viejo y sabio", "Torpe y gruñón", "Educado y tramposo",
+          "Escondido y miedica", "Mágico y celoso", "Listísimo y presumido", "Disfrazado y escurridizo",
+          "Alegre y bienintencionado", "Testarudo y alborotador"]
+GIRO = ["El pueblo está involucrado", "Una bruja rival le tendió una trampa", "El ladrón no lo hizo",
+        "El ladrón te está esperando", "El pueblo celebra un festival", "Al ladrón se le ha perdido el medallón",
+        "Hay dos ladrones (rivales) en el pueblo", "El pueblo está abandonado",
+        "El alguacil acusa del robo a un inocente", "Todo el pueblo lo adora"]
 HECHIZO = ["Mano invisible", "Conjurar luz", "Hablar humano", "Bloquear / desbloquear, abrir / cerrar",
-           "Conjurar comida", "Crear fuego", "Ordenar, limpiar y reparar", "Hacer crecer una planta",
+           "Conjurar comida", "Hacer burbujas de colores", "Ordenar, limpiar y reparar", "Hacer crecer una planta",
            "Distraer / confundir", "Hacer que un libro se lea en voz alta solo"]

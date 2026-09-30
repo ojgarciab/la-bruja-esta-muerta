@@ -95,7 +95,7 @@ ICONS = {
 <rect x="70" y="18" width="8" height="16" fill="{INK}"/>
 <rect x="56" y="66" width="14" height="24" fill="{W}"/><rect x="50" y="48" width="9" height="9" fill="{W}"/><rect x="70" y="48" width="9" height="9" fill="{W}"/>
 <rect x="21" y="60" width="10" height="10" fill="{W}"/>''',
-"cazador": f'''
+"ladron": f'''
 <path d="M28 58 L34 14 L66 14 L72 58 Z" fill="{INK}"/>
 <ellipse cx="50" cy="62" rx="44" ry="10" fill="{INK}"/>
 <rect x="30" y="44" width="40" height="8" fill="{W}"/>

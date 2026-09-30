@@ -16,7 +16,7 @@ class Documento:
     distinto formato nunca comparten hoja: al cambiar de formato se pasa página.
     """
 
-    def __init__(self, titulo="La bruja está muerta · Tarjetas"):
+    def __init__(self, titulo="El medallón de la bruja · Tarjetas"):
         self.titulo = titulo
         self._secciones = [["", []]]
 

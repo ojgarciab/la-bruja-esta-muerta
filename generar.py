@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera las tarjetas A4 de 'La bruja está muerta'.
+"""Genera las tarjetas A4 de 'El medallón de la bruja'.
 
     python generar.py              -> tarjetas.html + tarjetas.pdf (diseños actuales),
                                       con una hoja 2x5 por tabla de resultados al final
@@ -31,8 +31,8 @@ def mazo(media=False, copias=1, resultados="por_resultado_5x2"):
     pj, tb = Tarjetas.Personajes, Tarjetas.Tablas
     doc = Documento()
     doc.seccion("Tiradas de historia")  # primero: descripción, reglas y chuletas de las tablas
-    doc.add(Tarjetas.Historia.Introduccion.simple(), Tarjetas.Reglas.ComoJugar.con_peligro_mortal())
-    tablas = (tb.Pueblo, tb.Cazador, tb.Giro, tb.Hechizo)
+    doc.add(Tarjetas.Historia.Introduccion.simple(), Tarjetas.Reglas.ComoJugar.con_lios())
+    tablas = (tb.Pueblo, tb.Ladron, tb.Giro, tb.Hechizo)
     doc.add((t.media_altura() if media else t.simple()) for _ in range(copias) for t in tablas)
     doc.seccion("Personajes")
     doc.add(p.con_tiradas_de_inicio() for p in pj.todos())
@@ -50,13 +50,13 @@ def _tiradas_de_historia(doc):
     """Primera hoja: descripción del juego, reglas y las cuatro tablas d10 completas."""
     tb = Tarjetas.Tablas
     doc.seccion("Tiradas de historia")
-    doc.add(Tarjetas.Historia.Introduccion.simple(), Tarjetas.Reglas.ComoJugar.con_peligro_mortal())
-    doc.add(t.simple() for t in (tb.Pueblo, tb.Cazador, tb.Giro, tb.Hechizo))
+    doc.add(Tarjetas.Historia.Introduccion.simple(), Tarjetas.Reglas.ComoJugar.con_lios())
+    doc.add(t.simple() for t in (tb.Pueblo, tb.Ladron, tb.Giro, tb.Hechizo))
     return doc
 
 
 def edicion_personajes_para_rellenar():
-    """Tiradas de historia y fichas con líneas para apuntar pueblo, cazador y hechizo.
+    """Tiradas de historia y fichas con líneas para apuntar pueblo, ladrón y hechizo.
 
     Se escribe en ellas en cada partida, así que suelen durar una o dos partidas.
     """
@@ -70,28 +70,28 @@ def edicion_personajes_para_rellenar():
 def edicion_personajes_reutilizables():
     """Tiradas de historia, fichas sin campos de partida y una hoja 2x5 por tabla.
 
-    Pueblo, cazador y hechizo se reparten con las tarjetas de resultados en vez de
+    Pueblo, ladrón y hechizo se reparten con las tarjetas de resultados en vez de
     escribirse en la ficha, así que las fichas sirven para muchas partidas.
     """
     pj, tb = Tarjetas.Personajes, Tarjetas.Tablas
     doc = _tiradas_de_historia(Documento()).seccion("Personajes")
     doc.add(p.simple() for p in pj.todos())
     doc.add(pj.EnBlanco.simple(), pj.EnBlanco.simple())  # para crear dos personajes propios
-    for t in (tb.Pueblo, tb.Cazador, tb.Giro, tb.Hechizo):
+    for t in (tb.Pueblo, tb.Ladron, tb.Giro, tb.Hechizo):
         doc.seccion(t.titulo).add(t.por_resultado_5x2())
     return doc
 
 
 # Los PDF que se publican en cada versión (GitHub Releases): nombre de fichero -> generador
 EDICIONES = {
-    "la-bruja-esta-muerta-tarjetas-de-personajes-para-rellenar.pdf": edicion_personajes_para_rellenar,
-    "la-bruja-esta-muerta-tarjetas-de-personajes-reutilizables.pdf": edicion_personajes_reutilizables,
+    "el-medallon-de-la-bruja-tarjetas-de-personajes-para-rellenar.pdf": edicion_personajes_para_rellenar,
+    "el-medallon-de-la-bruja-tarjetas-de-personajes-reutilizables.pdf": edicion_personajes_reutilizables,
 }
 
 
 def catalogo():
     """Una muestra de cada diseño disponible, para compararlos."""
-    doc = Documento("La bruja está muerta · Catálogo de diseños")
+    doc = Documento("El medallón de la bruja · Catálogo de diseños")
     for grupo, modelos in Tarjetas.modelos().items():
         if grupo == "Personajes":
             disenos = Tarjetas.Personajes.Buho.disenos()

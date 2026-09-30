@@ -4,7 +4,7 @@ Cada modelo (un personaje, una tabla, las reglas…) expone un método por dise�
 marcado con @diseno. Llamarlo devuelve una Tarjeta lista para Documento.add():
 
     Tarjetas.Personajes.Buho.con_tiradas_de_inicio()
-    Tarjetas.Reglas.ComoJugar.con_peligro_mortal()
+    Tarjetas.Reglas.ComoJugar.con_lios()
 
 El CSS de cada diseño se aísla bajo una clase propia (p. ej. .pj-notas), así que
 un diseño nuevo puede reutilizar nombres de clase sin romper los antiguos.
@@ -12,7 +12,7 @@ un diseño nuevo puede reutilizar nombres de clase sin romper los antiguos.
 import html
 from dataclasses import dataclass, field
 
-from .datos import CAZADOR, ESPECIES, GIRO, HECHIZO, PUEBLO, RASGOS
+from .datos import ESPECIES, GIRO, HECHIZO, LADRON, PUEBLO, RASGOS
 from .estilo import ACC, FOOT, INK, TINT, W
 from .iconos import icon
 
@@ -143,12 +143,12 @@ CSS_PJ_TIRADAS = f'''
 &.blankchar .stat .val {{ background: #fff; border-right: 0.45mm solid {INK}; }}
 '''
 
-ELECCIONES = ["El pueblo es", "El cazador es", "La bruja te enseñó"]
+ELECCIONES = ["El pueblo es", "El ladrón es", "La bruja te enseñó"]
 
 
 def _peligro(n=8):
     return ('<div class="danger"><div class="dtop"><span class="lbl">Peligro</span>' + '<i></i>' * n + '</div>'
-            '<div class="dnote">Si tu tirada es <b>igual o menor</b> que tu peligro: grave desgracia, atrapado… o muerte.</div></div>')
+            '<div class="dnote">Si tu tirada es <b>igual o menor</b> que tu peligro: te atrapan, te pierdes… ¡o vuelves a casa a descansar!</div></div>')
 
 
 def _dado_d10(n=None):
@@ -185,7 +185,7 @@ class Personaje(Modelo):
 
     @diseno
     def con_notas(self):
-        """Diseño original: nombre, hechizo, peligro y notas del plan de venganza."""
+        """Diseño original: nombre, hechizo, peligro y notas del plan de rescate."""
         if self.especie:
             title = f'<div class="sp">{self.nombre}</div><div class="sub">Lindo animalito del bosque · d10 = {self.d10}</div>'
         else:
@@ -199,7 +199,7 @@ class Personaje(Modelo):
   <div class="stats">{stats}</div>
   <div class="line"><b>Hechizo</b><span class="fill"></span></div>
   <div class="danger"><span class="lbl">Peligro</span>{'<i></i>' * 8}</div>
-  <div class="notes"><b>Notas · Plan de venganza</b><div class="rule"></div><div class="rule"></div><div class="rule"></div></div>
+  <div class="notes"><b>Notas · Plan de rescate</b><div class="rule"></div><div class="rule"></div><div class="rule"></div></div>
   {FOOT}''')
 
     @diseno
@@ -220,7 +220,7 @@ class Personaje(Modelo):
 
     @diseno
     def con_tiradas_de_inicio(self):
-        """Rasgos junto al retrato, d10 en la esquina y líneas para pueblo, cazador y hechizo."""
+        """Rasgos junto al retrato, d10 en la esquina y líneas para pueblo, ladrón y hechizo."""
         title = f'<div class="sp">{self.nombre}</div>' if self.especie else '<div class="sp blankline"><span class="fill"></span></div>'
         stats = "".join(
             f'<div class="stat"><div class="val">{v}</div><div class="txt"><div class="ab">{nom}</div><div class="hint">{h}</div></div></div>'
@@ -242,10 +242,10 @@ class Introduccion(Modelo):
     @diseno
     def simple(self):
         return _tarjeta("tx-intro", "", f'''
-  <div class="head">{icon("caldero", "hico")}<div><div class="ht">La bruja está muerta</div><div class="hs">Un RPG acerca de la muerte</div></div></div>
-  <p class="prose"><span class="cap">É</span>rase una vez una bruja amable, sabia y hermosa que vivía en el bosque con su familiar, y su vida era pacífica y feliz… hasta que un malvado <b>cazador de brujas</b> irrumpió en su cabaña, la destrozó y la asesinó. Ahora está <b>MUERTA</b>.</p>
-  <p class="prose">Pero si te vengas, lo matas y llevas <b>sus ojos</b> hasta el cuerpo de ella en <b>una semana</b>, ella volverá a la vida. O eso has oído. E incluso si no funciona, al menos él estará muerto.</p>
-  <p class="prose big">Eres un lindo animalito del bosque. El cazador se ha ido al pueblo, el muy cobarde. <b>Atrápalo.</b></p>
+  <div class="head">{icon("caldero", "hico")}<div><div class="ht">El medallón de la bruja</div><div class="hs">Un juego de rol para animalitos valientes</div></div></div>
+  <p class="prose"><span class="cap">É</span>rase una vez una bruja amable, sabia y hermosa que vivía en el bosque con su familiar, y su vida era pacífica y feliz… hasta que un <b>ladrón</b> se coló de noche en su cabaña y le robó su <b>medallón mágico</b>. Sin él, la bruja ha caído en un <b>SUEÑO ENCANTADO</b> y no puede despertar.</p>
+  <p class="prose">Pero si recuperas el medallón y se lo pones otra vez al cuello antes de <b>la próxima luna llena</b>, ella despertará. O eso has oído. Y quizás el ladrón aprenda que robar no está bien.</p>
+  <p class="prose big">Eres un lindo animalito del bosque. El ladrón se ha escondido en el pueblo, el muy granuja. <b>¡Encuéntralo!</b></p>
   {FOOT}''')
 
 
@@ -271,10 +271,10 @@ class ComoJugar(Modelo):
         return self._tarjeta("rg-simple")
 
     @diseno
-    def con_peligro_mortal(self):
-        """Añade que sacar igual o menos que el peligro trae desgracia, captura o muerte."""
-        return self._tarjeta("rg-mortal", '''
-  <p class="prose">Si sacas una tirada <b>igual o menor</b> que tus puntos de peligro, puedes sufrir una <b>grave desgracia</b>, quedar <b>atrapado</b> o <b>morir</b>.</p>''')
+    def con_lios(self):
+        """Añade que sacar igual o menos que el peligro te mete en un buen lío."""
+        return self._tarjeta("rg-lios", '''
+  <p class="prose">Si sacas una tirada <b>igual o menor</b> que tus puntos de peligro, te metes en un <b>buen lío</b>: te <b>atrapan</b>, te <b>pierdes</b> o tienes que <b>volver a casa</b> a descansar.</p>''')
 
 
 CSS_TB_MEDIA = f'''
@@ -388,7 +388,7 @@ class Tarjetas:
 
     class Tablas:
         Pueblo = Tabla("El pueblo es…", "pueblo", PUEBLO, "Tirad para saber cómo es el pueblo")
-        Cazador = Tabla("El cazador es…", "cazador", CAZADOR, "Tirad para conocer a vuestro enemigo")
+        Ladron = Tabla("El ladrón es…", "ladron", LADRON, "Tirad para conocer a quien robó el medallón")
         Giro = Tabla("El giro", "giro", GIRO, "Solo para el GM · tira en secreto", secreta=True)
         Hechizo = Tabla("Tu bruja te enseñó…", "hechizo", HECHIZO, "Un hechizo · usar magia siempre es peligroso")
 
