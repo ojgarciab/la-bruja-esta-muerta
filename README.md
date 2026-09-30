@@ -80,7 +80,7 @@ El workflow [`.github/workflows/publicar-pdf.yml`](.github/workflows/publicar-pd
 
 - En cada petición de fusión y en `master`, los PDF quedan como artefacto `pdf` de la ejecución, para revisarlos.
 - Al subir una etiqueta `v*` (`git tag v1.0 && git push origin v1.0`), se adjuntan a la release de esa etiqueta, que se crea si no existe.
-- También puede lanzarse a mano desde la pestaña *Actions* ("Run workflow"), indicando la etiqueta de la release.
+- También puede lanzarse a mano desde la pestaña *Actions* ("Run workflow"), indicando la etiqueta de la release. Si la etiqueta ya existe, los PDF se generan desde su commit; si no, se crea en el commit de la rama elegida.
 
 Para publicar otro PDF, añade al diccionario `EDICIONES` su nombre de fichero y la función que construye su `Documento`.
 
