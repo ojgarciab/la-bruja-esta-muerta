@@ -1,0 +1,259 @@
+# La bruja está muerta · Tarjetas imprimibles
+
+Generador en Python de tarjetas A4 recortables para *La bruja está muerta*, la versión en castellano de *The Witch is Dead*, el rol de una página de Grant Howitt. Produce un PDF listo para imprimir con:
+
+- la descripción del juego, las reglas y las tablas d10 de la historia,
+- una ficha por cada especie de animalito del bosque, más fichas en blanco,
+- una tarjeta por cada resultado de las tablas, para repartirlas o sacarlas al azar.
+
+Cada tarjeta tiene varios **diseños** seleccionables, así que puedes probar diseños nuevos sin perder los anteriores.
+
+## Requisitos
+
+- Python 3.10 o superior.
+- [Playwright](https://playwright.dev/python/), que imprime el HTML a PDF con Chrome.
+- Google Chrome instalado. Si no lo tienes, Playwright puede usar su propio Chromium (ver abajo).
+
+Las fuentes (Lora y Caladea, con licencia OFL) están incluidas en `bruja/fuentes/` y van incrustadas en el HTML. Por eso, **para generar el PDF no hace falta conexión a internet**.
+
+## Instalación
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install playwright
+```
+
+Si no tienes Google Chrome, instala el Chromium de Playwright:
+
+```bash
+.venv/bin/playwright install chromium
+```
+
+## Uso rápido
+
+```bash
+.venv/bin/python generar.py
+```
+
+Genera `tarjetas.html` y `tarjetas.pdf`, con 7 hojas A4:
+
+| Hoja | Contenido | Rejilla |
+|---|---|---|
+| 1 | Tiradas de historia: introducción, cómo jugar, y las tablas del pueblo, el cazador, el giro y el hechizo | 2×3 |
+| 2–3 | Personajes: las 10 especies y 2 fichas en blanco | 2×3 |
+| 4 | El pueblo es…: una tarjeta por resultado | 2×5 |
+| 5 | El cazador es…: una tarjeta por resultado | 2×5 |
+| 6 | El giro: una tarjeta por resultado | 2×5 |
+| 7 | Tu bruja te enseñó…: una tarjeta por resultado | 2×5 |
+
+### Opciones de `generar.py`
+
+| Opción | Efecto |
+|---|---|
+| *(ninguna)* | El mazo completo descrito arriba |
+| `--sin-pdf` | Genera solo `tarjetas.html` |
+| `--sin-resultados` | Omite las hojas de tarjetas por resultado (queda un mazo de 3 hojas) |
+| `--resultados` | Tarjetas por resultado a media altura (2×6) en vez de 2×5 |
+| `--media` | Las cuatro tablas de la hoja 1 a media altura (tabla completa en 99×47,5 mm) |
+| `--copias N` | Repite las cuatro tablas N veces; por ejemplo, `--media --copias 3` llena una hoja de 12 |
+| `--catalogo` | Genera `catalogo.pdf` con una muestra de **todos** los diseños disponibles, para compararlos |
+
+Ejemplos:
+
+```bash
+.venv/bin/python generar.py --sin-resultados         # solo reglas, tablas y personajes
+.venv/bin/python generar.py --media --copias 3       # una hoja de tablas por jugador
+.venv/bin/python generar.py --catalogo               # comparar todos los diseños
+```
+
+### Consejos de impresión
+
+- Imprime a **tamaño real / escala 100 %**, sin "ajustar a la página", para que las tarjetas tengan su medida exacta.
+- Recorta por la línea discontinua gris. El marco morado de cada tarjeta deja margen de corte.
+
+## Uso desde Python
+
+```python
+from bruja import Documento, Tarjetas
+
+doc = Documento()
+doc.add(Tarjetas.Personajes.Buho.simple())
+doc.add(Tarjetas.Personajes.Gato.con_notas())
+doc.add(Tarjetas.Personajes.Buho.con_tiradas_de_inicio())
+doc.render("documento.pdf")        # o "documento.html"
+```
+
+La forma general es siempre `Tarjetas.<Grupo>.<Modelo>.<diseño>()`. La llamada devuelve una tarjeta, o una lista de tarjetas, lista para `Documento.add()`.
+
+### `Documento`
+
+| Método | Descripción |
+|---|---|
+| `Documento(titulo=…)` | Crea un documento vacío. El título es el del HTML o PDF. |
+| `.add(*tarjetas)` | Añade tarjetas, listas o generadores de tarjetas. Devuelve el documento, así que admite encadenar llamadas. |
+| `.seccion("Etiqueta")` | Empieza una sección nueva en página nueva. La etiqueta aparece en el pie de sus hojas ("Personajes 1/2 · recorta por la línea discontinua"). Sin secciones, el pie dice "Página n/N". |
+| `.render("ruta.pdf")` | Escribe el documento. La extensión (`.pdf` o `.html`) decide el formato. |
+| `.html()` | Devuelve el HTML completo como texto. |
+
+El documento coloca las tarjetas en hojas según su **formato**. Tarjetas de formatos distintos nunca comparten hoja: al cambiar de formato se pasa a una página nueva.
+
+| Formato | Tamaño | Rejilla por hoja A4 |
+|---|---|---|
+| `completa` | 99 × 95 mm | 2 × 3 = 6 |
+| `media` | 99 × 47,5 mm | 2 × 6 = 12 |
+| `quinta` | 99 × 57 mm | 2 × 5 = 10 |
+
+### Elegir diseño por nombre
+
+Cada modelo sabe qué diseños tiene. Así puedes elegirlos desde un bucle o un texto:
+
+```python
+Tarjetas.Personajes.Buho.disenos()
+# ['con_notas', 'con_tiradas_de_inicio', 'simple']
+
+Tarjetas.Personajes.Buho.diseno("con_notas")   # equivale a .con_notas()
+```
+
+Si el nombre no existe, se lanza un `ValueError` que indica los diseños disponibles.
+
+## Tarjetas y diseños disponibles
+
+### Personajes: `Tarjetas.Personajes.<Especie>`
+
+Especies, en orden de d10: `Zorro`, `Gato`, `Sapo`, `Arana`, `Buho`, `Liebre`, `Urraca`, `Cuervo`, `Perro`, `Rata`. Además está `EnBlanco`, una ficha para rellenar a mano con la especie, el retrato y los rasgos. `Tarjetas.Personajes.todos()` devuelve las 10 especies, sin las fichas en blanco.
+
+| Diseño | Formato | Descripción |
+|---|---|---|
+| `con_notas()` | completa | Diseño original: retrato, especie, líneas para nombre y hechizo, rasgos, peligro y notas del plan de venganza |
+| `simple()` | completa | Retrato y rasgos grandes, y un recuadro de peligro con la regla de desgracia |
+| `con_tiradas_de_inicio()` | completa | Rasgos junto al retrato, número del d10 en la esquina, y líneas para apuntar pueblo, cazador y hechizo. **Es el que usa el mazo por defecto.** |
+
+### Historia: `Tarjetas.Historia.Introduccion`
+
+| Diseño | Formato | Descripción |
+|---|---|---|
+| `simple()` | completa | La historia de la bruja y el objetivo de la partida |
+
+### Reglas: `Tarjetas.Reglas.ComoJugar`
+
+| Diseño | Formato | Descripción |
+|---|---|---|
+| `simple()` | completa | Reglas originales: tirada, dificultades y peligro |
+| `con_peligro_mortal()` | completa | Añade que sacar igual o menos que tu peligro trae desgracia, captura o muerte. **Por defecto.** |
+
+### Tablas d10: `Tarjetas.Tablas.<Tabla>`
+
+Tablas: `Pueblo`, `Cazador`, `Giro` (solo para el GM, con números morados y línea discontinua) y `Hechizo`.
+
+| Diseño | Formato | Devuelve | Descripción |
+|---|---|---|---|
+| `simple()` | completa | 1 tarjeta | La tabla completa con sus 10 resultados. **Por defecto** (hoja 1) |
+| `media_altura()` | media | 1 tarjeta | La tabla completa en media altura |
+| `por_resultado()` | media | 10 tarjetas | Una tarjeta por resultado, 12 por hoja |
+| `por_resultado_5x2()` | quinta | 10 tarjetas | Una tarjeta por resultado, 10 por hoja: cada tabla ocupa una hoja justa. **Por defecto** (hojas 4–7) |
+
+Para una sola tarjeta de resultado usa `resultado(n, formato)`, con `n` entre 1 y 10 y `formato` igual a `"media"` o `"quinta"`:
+
+```python
+Tarjetas.Tablas.Giro.resultado(7, "quinta")
+```
+
+## Más ejemplos
+
+**Todas las especies con un diseño concreto, más dos fichas en blanco:**
+
+```python
+from bruja import Documento, Tarjetas
+
+pj = Tarjetas.Personajes
+doc = Documento().seccion("Personajes")
+doc.add(p.simple() for p in pj.todos())
+doc.add(pj.EnBlanco.simple(), pj.EnBlanco.simple())
+doc.render("personajes.pdf")
+```
+
+**Una hoja por tabla de resultados, cada una con su nombre en el pie:**
+
+```python
+tb = Tarjetas.Tablas
+doc = Documento()
+for t in (tb.Pueblo, tb.Cazador, tb.Giro, tb.Hechizo):
+    doc.seccion(t.titulo).add(t.por_resultado_5x2())
+doc.render("resultados.pdf")
+```
+
+**Mezclar diseños y formatos en un mismo documento:**
+
+```python
+doc = Documento()
+doc.add(Tarjetas.Historia.Introduccion.simple(),
+        Tarjetas.Reglas.ComoJugar.simple())            # hoja 2×3
+doc.add(Tarjetas.Tablas.Pueblo.media_altura())        # pasa a una hoja 2×6
+doc.render("mezcla.pdf")
+```
+
+**Comparar dos diseños de la misma especie:**
+
+```python
+doc = Documento()
+doc.add(Tarjetas.Personajes.Buho.diseno(d) for d in Tarjetas.Personajes.Buho.disenos())
+doc.render("buho.pdf")
+```
+
+## Estructura del proyecto
+
+```
+.
+├── generar.py            # Script principal: mazo por defecto, opciones de línea de órdenes y catálogo
+├── bruja/                # Paquete con toda la lógica
+│   ├── __init__.py       # Exporta Documento, Tarjetas, Tarjeta, Modelo y diseno
+│   ├── documento.py      # Documento: paginación por formato y secciones, exportación a HTML y PDF
+│   ├── tarjetas.py       # Modelos (Personaje, Tabla, ComoJugar…), sus diseños y el catálogo Tarjetas
+│   ├── estilo.py         # Paleta de colores y CSS común (hoja, marco, tablas, texto)
+│   ├── iconos.py         # Ilustraciones SVG propias (animales e iconos de las tablas)
+│   ├── datos.py          # Datos del juego: especies, rasgos y tablas d10
+│   ├── tipografia.py     # Incrusta las fuentes en el HTML (y las descarga si faltan)
+│   └── fuentes/          # Lora y Caladea (woff2, subconjuntos latin y latin-ext) + fuentes.css
+├── tarjetas.html / .pdf  # Resultado del mazo por defecto
+└── catalogo.pdf          # Resultado de --catalogo
+```
+
+## Añadir un diseño nuevo
+
+1. En `bruja/tarjetas.py`, añade un método al modelo (por ejemplo, a `Personaje`) y márcalo con `@diseno`:
+
+   ```python
+   CSS_PJ_MINI = f'''
+   & {{ padding: 2mm; }}
+   .sp {{ font-size: 18pt; }}
+   '''
+
+   class Personaje(Modelo):
+       ...
+       @diseno
+       def mini(self):
+           """Descripción corta del diseño (aparece en disenos())."""
+           return _tarjeta("pj-mini", CSS_PJ_MINI, f'<div class="sp">{self.nombre}</div>')
+   ```
+
+2. El primer argumento de `_tarjeta()` es el **ámbito**: una clase única del diseño bajo la que se aísla su CSS. Cada selector se prefija con `.pj-mini`, y `&` se refiere al propio marco de la tarjeta. Así, un diseño nuevo puede reutilizar nombres de clase (`.sp`, `.stats`…) sin romper los anteriores.
+
+3. Para otro tamaño de tarjeta, pasa `formato="media"` o `formato="quinta"` a `_tarjeta()`. Si necesitas un formato nuevo, añádelo en `POR_PAGINA` (`documento.py`) y define su rejilla `.page.<formato>` en `estilo.py`.
+
+4. Comprueba el resultado con `.venv/bin/python generar.py --catalogo`. El nuevo diseño aparece automáticamente en el catálogo.
+
+## Historial de diseños
+
+Los diseños de las fichas de personaje salen del historial de git:
+
+| Commit | Diseño |
+|---|---|
+| `d22bb11` | `con_notas()` y `ComoJugar.simple()` |
+| `fb165c5` | `simple()` y `ComoJugar.con_peligro_mortal()` |
+| `fc46144` | `con_tiradas_de_inicio()`, versión con el dado recolocado y las líneas más espaciadas |
+
+Se reprodujeron con las clases actuales y se compararon píxel a píxel con los PDF de cada commit: son idénticos.
+
+## Créditos
+
+*The Witch is Dead* es un juego de Grant Howitt. Este proyecto solo maqueta tarjetas de ayuda para jugarlo en castellano. Las ilustraciones SVG son propias. Las fuentes Lora y Caladea se distribuyen bajo la SIL Open Font License.
