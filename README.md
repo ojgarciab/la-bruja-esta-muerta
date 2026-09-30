@@ -75,8 +75,15 @@ El workflow [`.github/workflows/publicar-pdf.yml`](.github/workflows/publicar-pd
 
 | PDF | Contenido |
 |---|---|
-| `la-bruja-esta-muerta-fichas-con-tiradas.pdf` | Hoja 1 con la descripción del juego, las reglas y las cuatro tablas d10; personajes `con_tiradas_de_inicio()` (con líneas para apuntar pueblo, cazador y hechizo) y 2 fichas en blanco |
-| `la-bruja-esta-muerta-tarjetas-de-resultados.pdf` | La misma hoja 1; personajes `simple()`, sin campos para rellenar, y una hoja 2×5 por tabla con una tarjeta por resultado |
+| `la-bruja-esta-muerta-tarjetas-de-personajes-para-rellenar.pdf` | Hoja 1 con la descripción del juego, las reglas y las cuatro tablas d10; personajes `con_tiradas_de_inicio()` (con líneas para apuntar pueblo, cazador y hechizo) y 2 fichas en blanco |
+| `la-bruja-esta-muerta-tarjetas-de-personajes-reutilizables.pdf` | La misma hoja 1; personajes `simple()`, sin campos para rellenar, y 2 fichas en blanco con ese mismo diseño; después, una hoja 2×5 por tabla con una tarjeta por resultado |
+
+#### ¿Qué PDF elegir?
+
+- **Personajes reutilizables:** las fichas no tienen nada que escribir en cada partida. La tirada inicial (el pueblo, el cazador y el hechizo que te enseñó la bruja) se resuelve con las tarjetas de resultados: se coloca junto a la ficha la tarjeta que ha salido y, al terminar, se devuelve a su montón. Así, la misma ficha sirve para partida tras partida. Las 2 fichas en blanco permiten crear dos personajes propios una sola vez y reutilizarlos igual.
+- **Personajes para rellenar:** cada ficha tiene líneas para apuntar el pueblo, el cazador y el hechizo. Aunque se puede escribir con lápiz y borrar, con el uso el papel se estropea, así que suelen servir para **una o dos partidas**. Es la opción cómoda si vas a jugar una vez o no quieres recortar las 40 tarjetas de resultados.
+
+**Para marcar el peligro, en las dos versiones**, es mejor no pintar los círculos con lápiz y borrarlos después: pon encima **fichas, cuentas, monedas o piedrecitas**. Puedes colocar una en el círculo del nivel actual, o tantas como puntos de peligro tengas. Así las fichas duran mucho más.
 
 - En cada petición de fusión y en `master`, los PDF quedan como artefacto `pdf` de la ejecución, para revisarlos.
 - Al subir una etiqueta `v*` (`git tag v1.0 && git push origin v1.0`), se adjuntan a la release de esa etiqueta, que se crea si no existe.
