@@ -1,0 +1,6 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 14 L38 36 L62 36 L86 14 L82 50 Q78 64 60 74 L50 90 L40 74 Q22 64 18 50 Z" fill="#2f2340"/>
+<path d="M20 22 L34 36 L26 40 Z M80 22 L66 36 L74 40 Z" fill="#ffffff" opacity=".85"/>
+<path d="M20 50 Q34 56 44 72 L50 90 L40 74 Q26 66 20 50 Z M80 50 Q66 56 56 72 L50 90 L60 74 Q74 66 80 50 Z" fill="#ffffff"/>
+<path d="M32 50 Q38 45 44 50 Q38 52 32 50 Z M56 50 Q62 45 68 50 Q62 52 56 50 Z" fill="#ffffff"/>
+<ellipse cx="50" cy="86" rx="5" ry="4" fill="#2f2340"/></svg>
