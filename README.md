@@ -305,7 +305,7 @@ La licencia CC BY-SA 4.0 de este proyecto **no se aplica** a los siguientes trab
 | Trabajo | Autoría | Condiciones |
 |---|---|---|
 | *[The Witch is Dead](https://gshowitt.itch.io/the-witch-is-dead)*: reglas, historia, tablas d10, especies y rasgos | Grant Howitt | Descarga gratuita ("paga lo que quieras") en itch.io. La página no indica ninguna licencia explícita, así que sus derechos pertenecen a su autor. |
-| Traducción al castellano *La bruja está muerta*, en la que se basan los textos de las tarjetas | Traducción no acreditada en el documento de origen | Sujeta a los derechos del juego original |
+| Traducción al castellano *[La bruja está muerta](https://es.scribd.com/document/740347186/The-Witch-is-Dead-ESP)*, en la que se basan los textos de las tarjetas | Publicada en Scribd por el usuario [Dranjietzk](https://es.scribd.com/user/577359877/Dranjietzk); el documento no acredita la traducción | Sujeta a los derechos del juego original |
 | Fuentes [Lora](https://fonts.google.com/specimen/Lora) y [Caladea](https://fonts.google.com/specimen/Caladea), en `bruja/fuentes/` | © 2011 The Lora Project Authors (Cyreal); © 2012 The Caladea Project Authors (Huerta Tipográfica) | [SIL Open Font License 1.1](https://openfontlicense.org): textos completos en [`OFL-Lora.txt`](bruja/fuentes/OFL-Lora.txt) y [`OFL-Caladea.txt`](bruja/fuentes/OFL-Caladea.txt) |
 | [Playwright](https://playwright.dev/python/), dependencia para generar el PDF (no se redistribuye) | Microsoft | [Apache 2.0](https://github.com/microsoft/playwright-python/blob/main/LICENSE) |
 
